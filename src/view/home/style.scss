@@ -1,6 +1,5 @@
 .main-conteiner-cards {
     max-width: 1800px;
-    height: 100vh;
     margin: 0 auto;
     overflow: hidden;
     position: relative;
@@ -22,40 +21,26 @@
 
     }
 
-    .arrowLeft {
-        cursor: pointer;
-        color: #000000a1;
-        margin-left: 10px;
-        font-size: 1.5rem;
-    }
-
-    .arrowRigth {
-        cursor: pointer;
-        color: #000000a1;
-        margin-right: 10px;
-        font-size: 1.5rem;
-    }
-
     .conteiner-carrousel {
-        width: 3000px;
-        overflow: hidden;
         display: flex;
         margin: 0 auto;
         position: relative;
         justify-content: center;
-        
+
         .carrousel {
+            margin-left: 620px;
+            width: 3000px;
             display: flex;
             scroll-behavior: smooth;
             transition: .5s ease-in-out;
 
             .conteiner-card {
-                width: 251px;
+                width: 240px;
                 padding: 30px;
                 cursor: pointer;
                 box-sizing: border-box;
                 background-color: #ffff;
-                margin: 40px 10px 10px 10px;
+                margin: 40px 40px 10px 0px;
                 border: solid 1px #00000018;
                 box-shadow: #00000021 2px 1px 6px;
 
@@ -66,7 +51,7 @@
 
                 .nome-produto {
                     font-weight: 900;
-                    margin-top: 0.5rem;
+                    margin-top: 1rem;
                     font-size: 0.875rem;
                     line-height: 1.125rem;
                     color: rgb(66, 70, 77);
@@ -80,16 +65,28 @@
                     color: #3423A6;
                     font-weight: 900;
                     font-size: 1.25rem;
-                    margin-top: 0.25rem;
+                    margin-top: 1rem;
                     margin-bottom: 0.25rem;
                 }
 
                 .pagamento-produto {
+                    margin-top: 1rem;
                     font-weight: 800;
                     font-size: 0.8rem;
                     color: rgb(52, 53, 54);
                 }
             }
         }
+    }
+}
+
+
+
+@media screen and (max-width:1760px) {
+
+    .conteiner-card {
+        margin-left: 0 !important;
+        width: 250px !important;
+
     }
 }
