@@ -4,7 +4,7 @@ import Header from "./view/header/home";
 
 function App() {
   return (
-    <div style={{backgroundColor: "#180b41", height: "100vh"}}>
+    <div style={{backgroundColor: "#180b41"}}>
       <Header />
       <Home />
     </div>

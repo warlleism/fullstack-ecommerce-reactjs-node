@@ -22,12 +22,8 @@ const Home = () => {
     const mes = date.getMonth() + 1;
     const [posicao, setPosicao] = useState(0)
 
-    const sliderSection = document.querySelectorAll(".card")
-    const selectionList = sliderSection[sliderSection.length]
-    
     return (
         <>
-            {console.log(selectionList)}
             {data?.length == 0 ?
                 <div style={{ height: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <ColorRing

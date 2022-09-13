@@ -58,6 +58,38 @@
             color: #ffffff;
         }
     }
+}
 
+.container-lista-links {
+    background-color: #ff6500;
+    display: flex;
+    justify-content: center;
 
+    .container-lista {
+        width: 50%;
+        display: flex;
+        list-style: none;
+        flex-direction: row;
+        justify-content: space-between;
+
+        li {
+            width: 100%;
+            height: 100%;
+            padding: 7px;
+            text-align: center;
+            transition: .3s ease-in-out;
+
+            a {
+                color: #ffff;
+                font-weight: 500;
+                font-size: 0.9rem;
+                text-decoration: none;
+            }
+        }
+
+        li:hover {
+            background-color: #833400;
+            transition: .3s ease-in-out;
+        }
+    }
 }
