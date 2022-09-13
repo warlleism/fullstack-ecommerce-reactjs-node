@@ -24,11 +24,11 @@ const Home = () => {
 
 
     const Left = () => {
-        posicao === 0 ? setPosicao(0) : setPosicao(posicao + 115)
+        posicao === 0 ? setPosicao(0) : setPosicao(parseInt(posicao + 11))
     }
 
     const Rigth = () => {
-        posicao === -575 ? setPosicao(0) : setPosicao(posicao - 115)
+        posicao === -33 ? setPosicao(0) : setPosicao(parseInt(posicao - 11))
     }
 
     return (
@@ -47,7 +47,6 @@ const Home = () => {
                 </div>
                 :
                 <div className='main-conteiner-cards'>
-                    {console.log(posicao)}
                     <div className='play-content'><div>{BuscarMes(mes)} TECH</div></div>
                     <div className='conteiner-arrow-left' style={{ position: 'absolute', zIndex: "9999", backgroundColor: "#f2f2f2", width: 52, left: 0, height: "100%", display: 'flex', alignItems: 'center' }}>
                         <FontAwesomeIcon className='arrowLeft' style={{ fontSize: "2rem", cursor: "pointer", marginLeft: "10px", color: "#9d9d9dcf" }} icon={faArrowLeft} onClick={() => Left()} />
@@ -56,10 +55,10 @@ const Home = () => {
                         <FontAwesomeIcon className='arrowRigth' style={{ fontSize: "2rem", cursor: "pointer", marginRight: "10px", color: "#9d9d9dcf" }} icon={faArrowRight} onClick={() => Rigth()} />
                     </div>
                     <div className='conteiner-carrousel'>
-                        <div className='carrousel' >
+                        <div className='carrousel' style={{ transform: `translateX(${posicao}%)` }} >
                             {data[0]?.map((e) => {
                                 return (
-                                    <div className='conteiner-card' style={{ transform: `translateX(${posicao}%)` }}>
+                                    <div className='conteiner-card'>
                                         <div>
                                             <img src={`data:image/png;base64,${e?.imagem}`} />
                                             <div className='nome-produto'>{e?.nome}</div>

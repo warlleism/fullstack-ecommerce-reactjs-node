@@ -3,14 +3,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons"
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons"
 import { faHeadset } from "@fortawesome/free-solid-svg-icons"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Header = () => {
+
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        fetch("http://localhost:3001/tipos")
+            .then((res) => res.json())
+            .then((data) => {
+                setData(data)
+            })
+    }, [])
+
 
     const [inputTexto, setInputTexto] = useState('')
 
     return (
         <>
+            {console.log(data)}
             <div className='main-header'>
                 <img src={require('../../img/logo.gif')} />
                 <div className='container-input'>
@@ -25,12 +37,14 @@ const Header = () => {
             </div>
             <div className='container-lista-links'>
                 <ul className='container-lista'>
-                    <li style={{ borderLeft: "solid 1px #ffffff29", borderRight: "solid 1px #ffffff29" }}><a href="#">DEPARTAMENTOS</a></li>
-                    <li style={{ borderRight: "solid 1px #ffffff29" }}><a href="#">LANÇAMENTOS</a></li>
-                    <li style={{ borderRight: "solid 1px #ffffff29" }}><a href="#">PC GAMER</a></li>
-                    <li style={{ borderRight: "solid 1px #ffffff29" }}><a href="#">ELETRÔNICOS</a> </li>
-                    <li style={{ borderRight: "solid 1px #ffffff29" }}><a href="#"> OFERTA DO DIA</a></li>
-                    <li style={{ borderRight: "solid 1px #ffffff29" }}><a href="#">BAIXE O APP</a></li>
+
+                    {
+                        data[0]?.map(dados => {
+                            return (
+                                <li style={dados.id == 1 ? { borderLeft: "solid 1px #ffffff29", borderRight: "solid 1px #ffffff29" } : { borderRight: "solid 1px #ffffff29" }}><a href="#">{dados.nome}</a></li>
+                            )
+                        })
+                    }
                 </ul>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', width: "100%" }}>

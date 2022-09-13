@@ -1,7 +1,7 @@
 .main-conteiner-cards {
-    max-width: 1780px;
     margin: 0 auto;
     overflow: hidden;
+    max-width: 93.6%;
     position: relative;
     background-color: #f2f2f2;
 
@@ -22,28 +22,29 @@
     }
 
     .conteiner-carrousel {
-        width: 100vw;
+        width: 150%;
         display: flex;
         margin: 0 auto;
 
         .carrousel {
-            margin-left: 67px;
-            width: 3000px;
+            width: 100%;
             display: flex;
+            margin-left: 60px;
             scroll-behavior: smooth;
             transition: .5s ease-in-out;
 
             .conteiner-card {
+                width: 9.8%;
                 display: flex;
-                transition: .5s ease-in-out;
-                flex-direction: column;
-                justify-content: space-between;
-                width: 240px;
                 padding: 30px;
                 cursor: pointer;
+                align-items: center;
+                flex-direction: column;
                 box-sizing: border-box;
                 background-color: #ffff;
-                margin: 40px 40px 10px 0px;
+                margin: 40px 25px 10px 0px;
+                transition: .5s ease-in-out;
+                justify-content: space-between;
                 border: solid 1px #00000018;
                 box-shadow: #00000021 2px 1px 6px;
 
@@ -83,46 +84,3 @@
     }
 }
 
-
-// @media screen and (max-width: 1779px) {
-
-//     .main-conteiner-cards {
-//         .conteiner-carrousel {
-//             .carrousel {
-//                 width: 2000px !important;
-//             }
-//         }
-//     }
-// }
-
-// @media screen and (max-width: 1518px) {
-
-//     .main-conteiner-cards {
-//         .conteiner-carrousel {
-//             .carrousel {
-//                 width: 1900px !important;
-//             }
-//         }
-//     }
-// }
-
-// @media screen and (max-width: 1326px) {
-
-//     .main-conteiner-cards {
-//         .conteiner-carrousel {
-//             .carrousel {
-//                 width: 1770px !important;
-//             }
-//         }
-//     }
-// }
-// @media screen and (max-width: 1261px) {
-
-//     .main-conteiner-cards {
-//         .conteiner-carrousel {
-//             .carrousel {
-//                 width: 1680px !important;
-//             }
-//         }
-//     }
-// }

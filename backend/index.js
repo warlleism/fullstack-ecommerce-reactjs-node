@@ -23,6 +23,12 @@
         res.send(clientes)
     })
 
+    //Rota para listagem de tipos
+    app.get('/tipos', async (req, res) => {
+        const clientes = await db.listarTipos()
+        res.send(clientes)
+    })
+
 
 })();
 

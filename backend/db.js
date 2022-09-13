@@ -18,4 +18,9 @@ const listarProduto = async () => {
     return await conn.query('SELECT * FROM itens;');
 }
 
-module.exports = { listarProduto }
+const listarTipos = async () => {
+    const conn = await connect();
+    return await conn.query('SELECT * FROM tipos;');
+}
+
+module.exports = { listarProduto, listarTipos }
