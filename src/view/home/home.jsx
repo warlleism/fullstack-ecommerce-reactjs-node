@@ -22,9 +22,12 @@ const Home = () => {
     const mes = date.getMonth() + 1;
     const [posicao, setPosicao] = useState(0)
 
+    const sliderSection = document.querySelectorAll(".card")
+    const selectionList = sliderSection[sliderSection.length]
+    
     return (
         <>
-            {console.log(posicao)}
+            {console.log(selectionList)}
             {data?.length == 0 ?
                 <div style={{ height: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <ColorRing
@@ -40,21 +43,25 @@ const Home = () => {
                 :
                 <div className='main-conteiner-cards'>
                     <div className='play-content'><div>{BuscarMes(mes)} TECH</div></div>
-                    <div className='conteiner-arrow-left' style={{ position: 'absolute', zIndex: "9999", backgroundColor: "#f2f2f2", width: 80, left: 0, height: "100%", display: 'flex', alignItems: 'center' }}>
+                    <div className='conteiner-arrow-left' style={{ position: 'absolute', zIndex: "9999", backgroundColor: "#f2f2f2", width: 52, left: 0, height: "100%", display: 'flex', alignItems: 'center' }}>
                         <FontAwesomeIcon className='arrowLeft' style={{ fontSize: "2rem", cursor: "pointer", marginLeft: "10px", color: "#9d9d9dcf" }} icon={faArrowLeft} onClick={() => posicao == 0 ? setPosicao(0) : setPosicao(posicao + 320)} />
                     </div>
-                    <div className='conteiner-arrow-right' style={{ position: 'absolute', zIndex: "9999", backgroundColor: "#f2f2f2", right: 0, height: "100%", display: 'flex', alignItems: 'center' }}>
+                    <div className='conteiner-arrow-right' style={{ position: 'absolute', zIndex: "9999", backgroundColor: "#f2f2f2", width: 50, right: 0, height: "100%", display: 'flex', alignItems: 'center' }}>
                         <FontAwesomeIcon className='arrowRigth' style={{ fontSize: "2rem", cursor: "pointer", marginRight: "10px", color: "#9d9d9dcf" }} icon={faArrowRight} onClick={() => posicao == -540 ? setPosicao(0) : setPosicao(posicao - 270)} />
                     </div>
                     <div className='conteiner-carrousel'>
                         <div className='carrousel' style={{ transform: `translateX(${posicao}px)` }}>
                             {data[0]?.map((e) => {
                                 return (
-                                    <div className='conteiner-card'>
-                                        <img src={`data:image/png;base64,${e?.imagem}`} />
-                                        <div className='nome-produto'>{e?.nome}</div>
-                                        <div className='preco-produto'>{e?.preco}</div>
-                                        <div className='pagamento-produto'>À vista no PIX</div>
+                                    <div className='conteiner-card' id='card'>
+                                        <div>
+                                            <img src={`data:image/png;base64,${e?.imagem}`} />
+                                            <div className='nome-produto'>{e?.nome}</div>
+                                        </div>
+                                        <div>
+                                            <div className='preco-produto'>{e?.preco}</div>
+                                            <div className='pagamento-produto'>À vista no PIX</div>
+                                        </div>
                                     </div>
                                 )
                             })}

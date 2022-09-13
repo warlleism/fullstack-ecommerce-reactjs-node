@@ -2,29 +2,29 @@
 function BuscarMes(valor) {
     switch (valor) {
         case 1:
-            return 'Janeiro'
+            return 'JANEIRO'
         case 2:
-            return 'Fevereiro'
+            return 'FEVEREIRO'
         case 3:
-            return 'Março'
+            return 'MARÇO'
         case 4:
-            return 'Abril'
+            return 'ABRIL'
         case 5:
-            return 'Maio'
+            return 'MAIO'
         case 6:
-            return 'Junho'
+            return 'JUNHO'
         case 7:
-            return 'Julho'
+            return 'JULHO'
         case 8:
-            return 'Agosto'
+            return 'AGOSTO'
         case 9:
-            return 'Setembro'
+            return 'SETEMBRO'
         case 10:
-            return 'Outubro'
+            return 'OUTUBRO'
         case 11:
-            return 'Novembro'
+            return 'NOVEMBRO'
         case 12:
-            return 'Dezembro'
+            return 'DEZEMBRO'
     }
 }
 

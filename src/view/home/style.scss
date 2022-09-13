@@ -1,5 +1,5 @@
 .main-conteiner-cards {
-    max-width: 1800px;
+    max-width: 1780px;
     margin: 0 auto;
     overflow: hidden;
     position: relative;
@@ -25,16 +25,18 @@
         display: flex;
         margin: 0 auto;
         position: relative;
-        justify-content: center;
 
         .carrousel {
-            margin-left: 620px;
+            margin-left: 67px;
             width: 3000px;
             display: flex;
             scroll-behavior: smooth;
             transition: .5s ease-in-out;
 
             .conteiner-card {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
                 width: 240px;
                 padding: 30px;
                 cursor: pointer;
@@ -64,7 +66,7 @@
                 .preco-produto {
                     color: #3423A6;
                     font-weight: 900;
-                    font-size: 1.25rem;
+                    font-size: 1.7rem;
                     margin-top: 1rem;
                     margin-bottom: 0.25rem;
                 }
@@ -81,12 +83,45 @@
 }
 
 
+@media screen and (max-width: 1779px) {
 
-@media screen and (max-width:1760px) {
+    .main-conteiner-cards {
+        .conteiner-carrousel {
+            .carrousel {
+                width: 2000px !important;
+            }
+        }
+    }
+}
 
-    .conteiner-card {
-        margin-left: 0 !important;
-        width: 250px !important;
+@media screen and (max-width: 1518px) {
 
+    .main-conteiner-cards {
+        .conteiner-carrousel {
+            .carrousel {
+                width: 1900px !important;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1326px) {
+
+    .main-conteiner-cards {
+        .conteiner-carrousel {
+            .carrousel {
+                width: 1770px !important;
+            }
+        }
+    }
+}
+@media screen and (max-width: 1261px) {
+
+    .main-conteiner-cards {
+        .conteiner-carrousel {
+            .carrousel {
+                width: 1680px !important;
+            }
+        }
     }
 }
