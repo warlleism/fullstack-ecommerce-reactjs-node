@@ -4,7 +4,7 @@ import Provider from "./context/provider";
 
 function App() {
   return (
-    <div style={{ backgroundColor: "#180b41" }}>
+    <div style={{ backgroundColor: "#180b41", height: "100vw" }}>
       <Provider>
         <Header />
       </Provider>

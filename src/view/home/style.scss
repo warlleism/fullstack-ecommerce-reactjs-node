@@ -54,6 +54,8 @@
                 }
 
                 .nome-produto {
+                    height: 125px;
+                    overflow: hidden;
                     font-weight: 900;
                     margin-top: 1rem;
                     font-size: 0.875rem;
@@ -81,5 +83,42 @@
                 }
             }
         }
+    }
+}
+
+@media screen and (max-width: 1703px) {
+    .conteiner-carrousel {
+        width: 145% !important;
+
+    }
+}
+
+@media screen and (max-width: 1399px) {
+    .conteiner-carrousel {
+        width: 138% !important;
+
+    }
+}
+
+@media screen and (max-width: 1213px) {
+    .conteiner-carrousel {
+        width: 130% !important;
+
+        
+        img {
+            height: 90px !important;
+            max-width: 100% !important;
+        }
+
+        .preco-produto {
+            width: 100px !important;
+            font-size: 1rem !important;
+
+        }
+    }
+}
+@media screen and (max-width: 1025px) {
+    .conteiner-carrousel {
+        width: 122% !important;
     }
 }
