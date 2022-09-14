@@ -72,22 +72,20 @@
         flex-direction: row;
         justify-content: space-between;
 
-        li {
-            width: 100%;
+        a {
+            font-weight: 500;
+            font-size: 0.9rem;
             height: 100%;
             padding: 7px;
+            text-decoration: none;
             text-align: center;
+            width: 100%;
+            color: #ffff;
             transition: .3s ease-in-out;
 
-            a {
-                color: #ffff;
-                font-weight: 500;
-                font-size: 0.9rem;
-                text-decoration: none;
-            }
         }
 
-        li:hover {
+        a:hover {
             background-color: #833400;
             transition: .3s ease-in-out;
         }

@@ -1,12 +1,13 @@
 import React from "react";
-import Home from "./view/home/home";
-import Header from "./view/header/home";
+import Header from "./view/header/index";
+import Provider from "./context/provider";
 
 function App() {
   return (
     <div style={{ backgroundColor: "#180b41" }}>
-      <Header />
-      <Home />
+      <Provider>
+        <Header />
+      </Provider>
     </div>
   );
 }

@@ -10,7 +10,7 @@ import './style.scss'
 const Home = () => {
 
     useEffect(() => {
-        fetch("http://localhost:3001/listar")
+        fetch("http://localhost:3001/listar/destaques")
             .then((res) => res.json())
             .then((data) => {
                 setData(data)
@@ -24,15 +24,16 @@ const Home = () => {
 
 
     const Left = () => {
-        posicao === 0 ? setPosicao(0) : setPosicao(parseInt(posicao + 11))
+        posicao === 0 ? setPosicao(-22) : setPosicao(parseInt(posicao + 11))
     }
 
     const Rigth = () => {
-        posicao === -33 ? setPosicao(0) : setPosicao(parseInt(posicao - 11))
+        posicao === -22 ? setPosicao(0) : setPosicao(parseInt(posicao - 11))
     }
 
     return (
         <>
+        {console.log(posicao)}
             {data?.length == 0 ?
                 <div style={{ height: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <ColorRing

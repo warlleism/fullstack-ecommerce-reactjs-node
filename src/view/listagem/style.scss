@@ -1,0 +1,55 @@
+.main-container-listagem {
+    width: 93.5%;
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    background-color: white;
+
+    .conteiner-card {
+        width: 250px;
+        display: flex;
+        padding: 30px;
+        cursor: pointer;
+        align-items: center;
+        flex-direction: column;
+        box-sizing: border-box;
+        background-color: #ffff;
+        margin: 40px 25px 10px 0px;
+        transition: .5s ease-in-out;
+        justify-content: space-between;
+        border: solid 1px #00000018;
+        box-shadow: #00000021 2px 1px 6px;
+
+        img {
+            height: 150px;
+            max-width: 100%;
+        }
+
+        .nome-produto {
+            font-weight: 900;
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            line-height: 1.125rem;
+            color: rgb(66, 70, 77);
+
+        }
+
+        .preco-produto {
+            color: #3423A6;
+            font-weight: 900;
+            font-size: 1.7rem;
+            margin-top: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .pagamento-produto {
+            margin-top: 1rem;
+            font-weight: 800;
+            font-size: 0.8rem;
+            color: rgb(52, 53, 54);
+        }
+    }
+}
