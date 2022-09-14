@@ -33,7 +33,6 @@ const Home = () => {
 
     return (
         <>
-        {console.log(posicao)}
             {data?.length == 0 ?
                 <div style={{ height: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <ColorRing
