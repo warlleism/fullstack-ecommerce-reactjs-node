@@ -19,11 +19,18 @@ const Listagem = () => {
             })
     }, [id])
 
+    const localItens = (value) => {
+        setDados(value)
+        localStorage.setItem("imagem", value.imagem)
+        localStorage.setItem("nome", value.nome)
+        localStorage.setItem("descricao", value.descricao)
+        localStorage.setItem("preco", value.preco)
+    }
+
     const [data, setData] = useState([])
 
     return (
         <>
-            {console.log(id)}
             <Header />
             {data?.length == 0 ?
                 < div style={{ height: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -41,7 +48,7 @@ const Listagem = () => {
                 <div className='main-container-listagem'>
                     {data[0]?.map((e) => {
                         return (
-                            <Link to="/detalhar" style={{ textDecoration: "none" }} onClick={() => setDados(e)}>
+                            <Link to="/detalhar" style={{ textDecoration: "none" }} onClick={() => localItens(e)}>
                                 <div className='conteiner-card'>
                                     <div>
                                         <img src={`data:image/png;base64,${e?.imagem}`} />

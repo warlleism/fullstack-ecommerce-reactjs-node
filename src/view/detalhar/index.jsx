@@ -11,6 +11,7 @@ const Detalhar = () => {
 
     return (
         <>
+        {console.log(localStorage.getItem("preco"))}
             <Header />
             {dados?.length == 0 ?
                 < div style={{ height: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -29,20 +30,17 @@ const Detalhar = () => {
                     <div className='container-nome-preco-imagem'>
                         <div className='conteiner-produto-detalhar'>
                             <div className='conteiner-imagem'>
-                                <img src={`data:image/png;base64,${dados?.imagem}`} />
+                                <img src={`data:image/png;base64,${localStorage.getItem("imagem") ? localStorage.getItem("imagem") : dados?.imagem}`} />
                             </div>
                             <div className='container-descricao'>
-                                <div className='nome-produto-detalhar'>{dados?.nome}</div>
-                                <div className='descricao-produto-detalhar'>{dados?.descricao}</div>
+                                <div className='nome-produto-detalhar'>{localStorage.getItem("nome") ? localStorage.getItem("nome") : dados?.nome}</div>
+                                <div className='descricao-produto-detalhar'>{localStorage.getItem("descricao") ? localStorage.getItem("descricao") : dados?.descricao}</div>
                             </div>
                         </div>
 
                         <div className='container-produto-pagamento'>
-                            <div className='preco-produto-detalhar'>{dados?.preco}</div>
+                            <div className='preco-produto-detalhar'>{localStorage.getItem("preco") ? localStorage.getItem("preco") : dados?.preco}</div>
                         </div>
-
-                    </div>
-                    <div>
                     </div>
                 </div>
             }

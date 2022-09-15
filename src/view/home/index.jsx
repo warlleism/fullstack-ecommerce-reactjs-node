@@ -37,6 +37,15 @@ const Home = () => {
         posicao === -22 ? setPosicao(0) : setPosicao(parseInt(posicao - 11))
     }
 
+    const localItens = (value) => {
+        setDados(value)
+        localStorage.setItem("imagem", value.imagem)
+        localStorage.setItem("nome", value.nome)
+        localStorage.setItem("descricao", value.descricao)
+        localStorage.setItem("preco", value.preco)
+    }
+
+
     return (
         <>
             <Header />
@@ -65,7 +74,7 @@ const Home = () => {
                         <div className='carrousel' style={{ transform: `translateX(${posicao}%)` }} >
                             {data[0]?.map((e) => {
                                 return (
-                                    <Link className='conteiner-card' to="/detalhar" style={{ textDecoration: "none" }} onClick={() => setDados(e)}>
+                                    <Link to="/detalhar" className='conteiner-card' style={{ textDecoration: "none" }} onClick={() => localItens(e)}>
                                         <div>
                                             <img src={`data:image/png;base64,${e?.imagem}`} />
                                             <div className='nome-produto'>{e?.nome}</div>
