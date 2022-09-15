@@ -1,9 +1,13 @@
 import BuscarMes from '../../util/mes';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ColorRing } from 'react-loader-spinner';
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
+import Header from '../header';
+import { Context } from "../../context/provider";
+
 
 import './style.scss'
 
@@ -22,6 +26,8 @@ const Home = () => {
     const mes = date.getMonth() + 1;
     const [posicao, setPosicao] = useState(0)
 
+    const { setDados } = useContext(Context);
+
 
     const Left = () => {
         posicao === 0 ? setPosicao(-22) : setPosicao(parseInt(posicao + 11))
@@ -33,6 +39,7 @@ const Home = () => {
 
     return (
         <>
+            <Header />
             {data?.length == 0 ?
                 <div style={{ height: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <ColorRing
@@ -42,7 +49,7 @@ const Home = () => {
                         ariaLabel="blocks-loading"
                         wrapperStyle={{}}
                         wrapperClass="blocks-wrapper"
-                        colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+                        colors={['#F9F871', '#691A55', '#AE3B59', '#E17053', '#FBB252']}
                     />
                 </div>
                 :
@@ -58,7 +65,7 @@ const Home = () => {
                         <div className='carrousel' style={{ transform: `translateX(${posicao}%)` }} >
                             {data[0]?.map((e) => {
                                 return (
-                                    <div className='conteiner-card'>
+                                    <Link className='conteiner-card' to="/detalhar" style={{ textDecoration: "none" }} onClick={() => setDados(e)}>
                                         <div>
                                             <img src={`data:image/png;base64,${e?.imagem}`} />
                                             <div className='nome-produto'>{e?.nome}</div>
@@ -67,7 +74,7 @@ const Home = () => {
                                             <div className='preco-produto'>{e?.preco}</div>
                                             <div className='pagamento-produto'>À vista no PIX</div>
                                         </div>
-                                    </div>
+                                    </Link>
                                 )
                             })}
                         </div>

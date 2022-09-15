@@ -16,6 +16,7 @@ const listarProduto = async () => {
     return await conn.query('select * from itens');
 }
 
+
 const listarDestaques = async () => {
     const conn = await connect();
     return await conn.query('select * from itens where destaques = 1');

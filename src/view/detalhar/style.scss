@@ -1,0 +1,64 @@
+.main-container-detalhar {
+    width: 93.5%;
+    margin: 0 auto;
+    display: flex;
+    background-color: #f2f2f2f2;
+
+    .container-nome-preco-imagem {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 700px;
+        border-radius: 10px;
+        margin: 20px 0px 20px 0px;
+
+        .conteiner-produto-detalhar {
+            box-sizing: border-box;
+            padding: 50px;
+            width: 60%;
+            display: flex;
+            flex-direction: row;
+            margin-right: 10px;
+            background-color: white;
+            border-radius: 10px;
+
+            .conteiner-imagem {
+                img {
+                    border-radius: 10px;
+                    max-width: 500px;
+                }
+            }
+
+            .container-descricao {
+                .nome-produto-detalhar {
+                    margin: 40px 0px 40px 0px;
+                    font-size: 1.4rem;
+                    font-weight: 600;
+                    color: rgba(0, 0, 0, 0.747);
+                }
+
+                .descricao-produto-detalhar {
+                    font-size: 0.9rem;
+                    color: rgba(0, 0, 0, 0.747);
+                }
+            }
+        }
+
+        .container-produto-pagamento {
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            border-radius: 10px;
+            box-sizing: border-box;
+            padding: 50px;
+
+            .preco-produto-detalhar {
+                font-size: 1.4rem;
+                font-weight: 600;
+                color: rgba(0, 0, 0, 0.747);
+            }
+
+        }
+    }
+}

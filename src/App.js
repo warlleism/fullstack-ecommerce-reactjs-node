@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "./view/header/index";
 import Provider from "./context/provider";
+import Rotas from "./routes";
 
 function App() {
   return (
-    <div style={{ backgroundColor: "#180b41", height: "100vw" }}>
+    <div style={{ backgroundColor: "#180b41" }}>
       <Provider>
-        <Header />
+        <Rotas />
       </Provider>
     </div>
   );

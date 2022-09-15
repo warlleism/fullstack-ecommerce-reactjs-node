@@ -37,7 +37,7 @@
 
     //Rota para listagem produto pelo id
     app.get('/listar/:id', async (req, res) => {
-        const clientes = await db.listarProdutoId(req.params.id)
+        const clientes = await db.listarProdutoId(req?.params?.id)
         res.send(clientes)
     })
 
