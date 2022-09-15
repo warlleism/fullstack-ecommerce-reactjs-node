@@ -43,6 +43,7 @@ const Home = () => {
         localStorage.setItem("nome", value.nome)
         localStorage.setItem("descricao", value.descricao)
         localStorage.setItem("preco", value.preco)
+        localStorage.setItem("estrelas", value.estrelas)
     }
 
 

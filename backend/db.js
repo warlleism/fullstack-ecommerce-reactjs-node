@@ -29,7 +29,7 @@ const listarTipos = async () => {
 
 const listarProdutoId = async (valor) => {
     const conn = await connect();
-    return await conn.query(`select i.nome, i.preco, i.imagem, i.descricao from itens as i inner join tipos as t on t.id = i.tipo where i.tipo = ${valor}`);
+    return await conn.query(`select i.nome, i.preco, i.imagem, i.descricao, i.estrelas from itens as i inner join tipos as t on t.id = i.tipo where i.tipo = ${valor}`);
 }
 
 

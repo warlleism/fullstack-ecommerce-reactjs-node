@@ -1,17 +1,34 @@
-import React, { useContext } from 'react';
 import { ColorRing } from 'react-loader-spinner';
 import { Context } from "../../context/provider";
+import React, { useContext } from 'react';
+import { faStar } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Header from '../header';
 
 import './style.scss'
+import { useEffect } from 'react';
 
 const Detalhar = () => {
 
     const { dados } = useContext(Context);
 
+    const arrayQtdEstrelas = []
+
+    function Stars() {
+
+        const estrelasQtd = localStorage.getItem("estrelas").length
+
+        const valor = estrelasQtd
+
+
+        for (let i = 0; i < valor; i++) {
+            arrayQtdEstrelas.push(i)
+        }
+    }
+
     return (
         <>
-        {console.log(localStorage.getItem("preco"))}
+            {Stars()}
             <Header />
             {dados?.length == 0 ?
                 < div style={{ height: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -33,6 +50,15 @@ const Detalhar = () => {
                                 <img src={`data:image/png;base64,${localStorage.getItem("imagem") ? localStorage.getItem("imagem") : dados?.imagem}`} />
                             </div>
                             <div className='container-descricao'>
+                                <div className='container-estrelas'>
+                                    {
+                                        arrayQtdEstrelas.map(() => {
+                                            return (
+                                                <FontAwesomeIcon style={{ fontSize: "2rem", cursor: "pointer", color: "yellow" }} icon={faStar} />
+                                            )
+                                        })
+                                    }
+                                </div>
                                 <div className='nome-produto-detalhar'>{localStorage.getItem("nome") ? localStorage.getItem("nome") : dados?.nome}</div>
                                 <div className='descricao-produto-detalhar'>{localStorage.getItem("descricao") ? localStorage.getItem("descricao") : dados?.descricao}</div>
                             </div>
