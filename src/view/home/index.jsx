@@ -51,7 +51,7 @@ const Home = () => {
         <>
             <Header />
             {data?.length == 0 ?
-                <div style={{ height: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ height: "100vh", width: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <ColorRing
                         visible={true}
                         height="130"
