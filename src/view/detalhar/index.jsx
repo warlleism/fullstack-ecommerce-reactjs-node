@@ -1,6 +1,7 @@
 import { ColorRing } from 'react-loader-spinner';
 import { Context } from "../../context/provider";
 import React, { useContext } from 'react';
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons"
 import { faStar } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Header from '../header';
@@ -54,7 +55,7 @@ const Detalhar = () => {
                                     {
                                         arrayQtdEstrelas.map(() => {
                                             return (
-                                                <FontAwesomeIcon style={{ fontSize: "2rem", cursor: "pointer", color: "yellow" }} icon={faStar} />
+                                                <FontAwesomeIcon style={{ fontSize: "2rem", cursor: "pointer", color: "#f8f830" }} icon={faStar} />
                                             )
                                         })
                                     }
@@ -66,6 +67,15 @@ const Detalhar = () => {
 
                         <div className='container-produto-pagamento'>
                             <div className='preco-produto-detalhar'>{localStorage.getItem("preco") ? localStorage.getItem("preco") : dados?.preco}</div>
+                            <div className='container-cep-calculo'>
+                                <div style={{ marginTop: 40, marginBottom: 4, fontSize: 14 }}>Calcular frete e prazo </div>
+                                <div className='container-cep-botao'>
+                                    <input type="number" placeholder='digite seu CEP' />
+                                    <button>Ok</button>
+                                </div>
+                            </div>
+                            <div className='botao-comprar'><FontAwesomeIcon style={{ fontSize: "1.3rem", cursor: "pointer", color: "#ffff", marginRight: 10 }} icon={faCartShopping} />Comprar</div>
+                            <div style={{ color: "#0000009f" }}>Este produto é vendido e entregue por Tecnolink.</div>
                         </div>
                     </div>
                 </div>

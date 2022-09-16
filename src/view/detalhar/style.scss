@@ -5,24 +5,25 @@
     background-color: #f2f2f2f2;
 
     .container-nome-preco-imagem {
-        display: flex;
-        justify-content: center;
         width: 100%;
+        display: flex;
         border-radius: 10px;
+        justify-content: center;
         margin: 20px 0px 20px 0px;
 
         .conteiner-produto-detalhar {
-            box-sizing: border-box;
-            padding: 50px;
             width: 60%;
+            padding: 40px;
             display: flex;
-            flex-direction: row;
             margin-right: 10px;
-            background-color: white;
             border-radius: 10px;
+            flex-direction: row;
+            box-sizing: border-box;
+            background-color: white;
 
             .conteiner-imagem {
                 width: 50%;
+                margin-right: 40px;
 
                 img {
                     border-radius: 10px;
@@ -46,6 +47,7 @@
 
                 .descricao-produto-detalhar {
                     font-size: 0.9rem;
+                    width: 90%;
                     color: rgba(0, 0, 0, 0.747);
                 }
             }
@@ -54,16 +56,73 @@
         .container-produto-pagamento {
             width: 20%;
             display: flex;
-            flex-direction: column;
-            background-color: white;
+            padding: 50px;
             border-radius: 10px;
             box-sizing: border-box;
-            padding: 50px;
+            flex-direction: column;
+            background-color: white;
+            justify-content: space-around;
 
             .preco-produto-detalhar {
-                font-size: 1.4rem;
                 font-weight: 600;
-                color: rgba(0, 0, 0, 0.747);
+                font-size: 1.8rem;
+                color: rgba(0, 0, 0, 0.87);
+            }
+
+            .botao-comprar {
+                padding: 7px;
+                display: flex;
+                color: #ffff;
+                cursor: pointer;
+                font-weight: 900;
+                font-size: 1.4rem;
+                border-radius: 7px;
+                align-items: center;
+                justify-content: center;
+                background-color: #180b41;
+            }
+
+            .container-cep-calculo {
+                border-bottom: #00000015 solid 2px;
+                border-top: #00000015 solid 2px;
+                margin-top: 20px;
+
+                .container-cep-botao {
+                    display: flex;
+                    margin-bottom: 40px;
+
+                    input::-webkit-outer-spin-button,
+                    input::-webkit-inner-spin-button {
+                        -webkit-appearance: none;
+                        margin: 0;
+                    }
+
+                    input {
+                        width: 70%;
+                        padding: 9px;
+                        outline: none;
+                        font-size: 1.1rem;
+                        border-radius: 7px;
+                        margin-right: 20px;
+                        border: solid 1px black;
+
+                    }
+
+                    button {
+                        width: 20%;
+                        display: flex;
+                        display: flex;
+                        cursor: pointer;
+                        font-size: 1rem;
+                        font-weight: 500;
+                        color: #180b41;
+                        border-radius: 7px;
+                        align-items: center;
+                        justify-content: center;
+                        border: solid 1px #180b41;
+                        background-color: transparent;
+                    }
+                }
             }
 
         }
