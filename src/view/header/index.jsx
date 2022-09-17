@@ -11,8 +11,12 @@ import './style.scss'
 const Header = () => {
 
     const [data, setData] = useState([])
+    const [handler, setHandler] = useState([])
+    const [searchFilter, setSearchFilter] = useState()
+    const [inputTexto, setInputTexto] = useState('')
 
     const { setId } = useContext(Context);
+    const { setDados } = useContext(Context);
 
     useEffect(() => {
         fetch("http://localhost:3001/tipos")
@@ -22,7 +26,38 @@ const Header = () => {
             })
     }, [])
 
-    const [inputTexto, setInputTexto] = useState('')
+    useEffect(() => {
+        fetch("http://localhost:3001/listar")
+            .then((res) => res.json())
+            .then((data) => {
+                setHandler(data[0])
+            })
+        handlesFilter()
+
+        document.addEventListener("click", () => setInputTexto(""))
+    }, [inputTexto])
+
+    const handlesFilter = () => {
+        const searchWord = inputTexto
+        const newFilter = handler.filter((value) => {
+            return value?.nome?.toLowerCase()?.includes(searchWord)
+        })
+        setSearchFilter(newFilter)
+    }
+
+
+    const localItens = (value) => {
+        setInputTexto("")
+        setDados(value)
+        localStorage.setItem("imagem", value.imagem)
+        localStorage.setItem("nome", value.nome)
+        localStorage.setItem("descricao", value.descricao)
+        localStorage.setItem("preco", value.preco)
+        localStorage.setItem("estrelas", value.estrelas)
+    }
+
+
+
 
     return (
         <>
@@ -31,8 +66,27 @@ const Header = () => {
                     <img src={require('../../img/logo.gif')} />
                 </Link>
                 <div className='container-input'>
-                    <input type="text" onChange={e => setInputTexto(e.target.value)} />
+                    <input type="text" value={inputTexto} onChange={e => setInputTexto(e.target.value)} />
                     {inputTexto != '' ? false : <div className='texto-busque-aqui'>Busque aqui</div>}
+
+                    {
+                        inputTexto != '' ?
+                            <div className='container-pesquisa' id='pesquisa'>
+                                {
+                                    searchFilter?.map((data) => {
+                                        return (
+                                            <Link to="/detalhar" className='resultado-pesquisa' style={{ textDecoration: "none" }} onClick={() => localItens(data)}>
+                                                <img src={`data:image/png;base64,${data?.imagem}`} alt="" />
+                                                {data?.nome}
+                                            </Link>
+                                        )
+                                    })
+                                }
+                            </div>
+                            :
+                            false
+                    }
+
                 </div>
                 <div className='content-conteiner'>
                     <FontAwesomeIcon icon={faCircleUser} className="icon" />

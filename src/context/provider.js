@@ -8,7 +8,7 @@ export default function Provider({ children }) {
     const [dados, setDados] = useState()
 
     return (
-        <Context.Provider value={{ id, setId, dados, setDados }}>
+        <Context.Provider value={{ id, setId, dados, setDados}}>
             {children}
         </Context.Provider>
     )
