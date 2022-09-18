@@ -25,6 +25,7 @@ const Home = () => {
     const date = new Date();
     const mes = date.getMonth() + 1;
     const [posicao, setPosicao] = useState(0)
+    const [posicaoMobile, setPosicaoMobile] = useState(0)
 
     const { setDados } = useContext(Context);
 
@@ -34,6 +35,14 @@ const Home = () => {
 
     const Rigth = () => {
         posicao == -23 ? setPosicao(0) : setPosicao(parseInt(posicao - 23))
+    }
+
+    const LeftMobile = () => {
+        posicaoMobile == 0 ? setPosicaoMobile(-700) : setPosicaoMobile(parseInt(posicaoMobile + 100))
+    }
+
+    const RigthMobile = () => {
+        posicaoMobile == -700 ? setPosicaoMobile(0) : setPosicaoMobile(parseInt(posicaoMobile - 100))
     }
 
     const localItens = (value) => {
@@ -47,8 +56,8 @@ const Home = () => {
 
     return (
         <>
-            {console.log(posicao)}
-            <Header />
+            {console.log(posicaoMobile)}
+            {/* <Header /> */}
             {data?.length == 0 ?
                 <div style={{ height: "100vh", width: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <ColorRing
@@ -85,12 +94,31 @@ const Home = () => {
                                     )
                                 })}
                             </div>
-
                         </div>
                         <div className='conteiner-arrow-right' style={{ zIndex: 9999, backgroundColor: "#f2f2f2", width: 50, right: 0, height: "100%" }}>
                             <FontAwesomeIcon className='arrowRigth' style={{ fontSize: "2rem", cursor: "pointer", marginRight: "10px", color: "#9d9d9dcf" }} icon={faArrowRight} onClick={() => Rigth()} />
                         </div>
                     </div>
+
+                    <div style={{ display: 'flex' }}>
+                        <div className='conteiner-arrow-right' style={{ display: 'flex', alignItems: 'center', position: 'absolute', left: 0, zIndex: 9999, backgroundColor: "#f2f2f2", width: 50, right: 0, height: "44%" }}>
+                            <FontAwesomeIcon className='arrowLeft' style={{ fontSize: "2rem", cursor: "pointer", marginRight: "10px", color: "#9d9d9dcf" }} icon={faArrowLeft} onClick={() => LeftMobile()} />
+                        </div>
+                        <div className='container-carroussel-cards-mobile' style={{ transform: `translateX(${posicaoMobile}vw)` }}>
+                            {data[0]?.map((e) => {
+                                return (
+                                    <Link key={e.id} to="/detalhar" className='cards-mobile' style={{ textDecoration: "none" }} onClick={() => localItens(e)}>
+                                        <img src={`data:image/png;base64,${e?.imagem}`} />
+                                        <div className='nome-produto'>{e?.nome}</div>
+                                    </Link>
+                                )
+                            })}
+                        </div>
+                        <div className='conteiner-arrow-right' style={{ display: 'flex', alignItems: 'center', position: 'absolute', rigth: 0, zIndex: 9999, backgroundColor: "#f2f2f2", width: 50, right: 0, height: "44%" }}>
+                            <FontAwesomeIcon className='arrowRigth' style={{ fontSize: "2rem", cursor: "pointer", marginRight: "10px", color: "#9d9d9dcf" }} icon={faArrowRight} onClick={() => RigthMobile()} />
+                        </div>
+                    </div>
+
                     <div className="container-imagems-promocao">
                         <img src={require('../../img/promocao1.png')} alt="" />
                         <img src={require('../../img/promocao2.png')} alt="" />
