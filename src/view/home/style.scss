@@ -1,8 +1,8 @@
 .main-conteiner-cards {
     margin: 0 auto;
-    overflow: hidden;
-    max-width: 93.6%;
+    width: 93.6%;
     position: relative;
+    overflow: hidden;
     background-color: #f2f2f2;
 
     .play-content {
@@ -18,39 +18,44 @@
         div {
             margin-left: 30px;
         }
-
     }
 
     .conteiner-carrousel {
-        width: 150%;
         display: flex;
-        margin: 0 auto;
+        width: 100%;
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
 
-        .carrousel {
-            width: 100%;
-            display: flex;
-            margin-left: 60px;
-            scroll-behavior: smooth;
-            transition: .5s ease-in-out;
+        .container-carroussel-cards {
+            width: 1700px;
+            overflow: hidden;
 
-            .conteiner-card {
-                width: 9.8%;
+            .container-cards {
+                display: flex;
+                width: 2200px;
+                transition: .2s ease-in-out;
+            }
+
+            .cards {
+                width: 20%;
+                height: 500px;
                 display: flex;
                 padding: 30px;
                 cursor: pointer;
                 align-items: center;
                 flex-direction: column;
                 box-sizing: border-box;
+                justify-content: center;
                 background-color: #ffff;
                 margin: 40px 25px 10px 0px;
                 transition: .5s ease-in-out;
-                justify-content: space-between;
                 border: solid 1px #00000018;
                 box-shadow: #00000021 2px 1px 6px;
 
                 img {
-                    max-width: 100%;
-                    height: 150px;
+                    width: 100%;
+                    height: 160px;
                 }
 
                 .nome-produto {
@@ -61,10 +66,6 @@
                     font-size: 0.875rem;
                     line-height: 1.125rem;
                     color: rgb(66, 70, 77);
-                    // max-width: 100%;
-                    // overflow: hidden;
-                    // text-overflow: ellipsis;
-                    // white-space: nowrap;
                 }
 
                 .preco-produto {
@@ -84,67 +85,33 @@
             }
         }
     }
-}
 
-@media screen and (max-width: 1703px) {
-    .conteiner-carrousel {
-        width: 145% !important;
 
-    }
-}
-
-@media screen and (max-width: 1399px) {
-    .conteiner-carrousel {
-        width: 138% !important;
-
-    }
-}
-
-@media screen and (max-width: 1213px) {
-    .conteiner-carrousel {
-        width: 130% !important;
-
+    .container-imagems-promocao {
+        width: 100%;
+        height: 200px;
+        display: flex;
+        margin-bottom: 100px;
 
         img {
-            height: 90px !important;
-            max-width: 100% !important;
-        }
-
-        .preco-produto {
-            width: 100px !important;
-            font-size: 1rem !important;
-
+            width: 100%;
+            margin: 10px;
+            height: 100%;
+            border-radius: 5px;
         }
     }
 }
 
-@media screen and (max-width: 1155px) {
+@media screen and (max-width: 958px) {
     .conteiner-carrousel {
-        width: 122% !important;
+        .cards {
+            width: 6.4% !important;
+            img {
+                width: 100%;
+                height: 100px !important;
+            }
+
+        }
+
     }
-}
-
-@media screen and (max-width: 999px) {
-    .conteiner-carrousel {
-        width: 120% !important;
-
-        .nome-produto {
-            font-size: 0.8rem !important;
-
-        }
-
-        .preco-produto {
-            font-size: 1rem !important;
-            margin-bottom: 0px !important;
-        }
-
-        .pagamento-produto {
-            width: 80px;
-            margin-left: 10px;
-            margin-top: 0px !important;
-            font-weight: 800 !important;
-            font-size: 0.6em !important;
-        }
-    }
-
 }

@@ -28,13 +28,12 @@ const Home = () => {
 
     const { setDados } = useContext(Context);
 
-
     const Left = () => {
-        posicao === 0 ? setPosicao(-22) : setPosicao(parseInt(posicao + 11))
+        posicao == 0 ? setPosicao(-23) : setPosicao(parseInt(posicao + 23))
     }
 
     const Rigth = () => {
-        posicao === -22 ? setPosicao(0) : setPosicao(parseInt(posicao - 11))
+        posicao == -23 ? setPosicao(0) : setPosicao(parseInt(posicao - 23))
     }
 
     const localItens = (value) => {
@@ -46,9 +45,9 @@ const Home = () => {
         localStorage.setItem("estrelas", value.estrelas)
     }
 
-
     return (
         <>
+            {console.log(posicao)}
             <Header />
             {data?.length == 0 ?
                 <div style={{ height: "100vh", width: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -65,29 +64,36 @@ const Home = () => {
                 :
                 <div className='main-conteiner-cards'>
                     <div className='play-content'><div>{BuscarMes(mes)} TECH</div></div>
-                    <div className='conteiner-arrow-left' style={{ position: 'absolute', zIndex: "9999", backgroundColor: "#f2f2f2", width: 52, left: 0, height: "100%", display: 'flex', alignItems: 'center' }}>
-                        <FontAwesomeIcon className='arrowLeft' style={{ fontSize: "2rem", cursor: "pointer", marginLeft: "10px", color: "#9d9d9dcf" }} icon={faArrowLeft} onClick={() => Left()} />
-                    </div>
-                    <div className='conteiner-arrow-right' style={{ position: 'absolute', zIndex: "9999", backgroundColor: "#f2f2f2", width: 50, right: 0, height: "100%", display: 'flex', alignItems: 'center' }}>
-                        <FontAwesomeIcon className='arrowRigth' style={{ fontSize: "2rem", cursor: "pointer", marginRight: "10px", color: "#9d9d9dcf" }} icon={faArrowRight} onClick={() => Rigth()} />
-                    </div>
                     <div className='conteiner-carrousel'>
-                        <div className='carrousel' style={{ transform: `translateX(${posicao}%)` }} >
-                            {data[0]?.map((e) => {
-                                return (
-                                    <Link to="/detalhar" className='conteiner-card' style={{ textDecoration: "none" }} onClick={() => localItens(e)}>
-                                        <div>
-                                            <img src={`data:image/png;base64,${e?.imagem}`} />
-                                            <div className='nome-produto'>{e?.nome}</div>
-                                        </div>
-                                        <div>
-                                            <div className='preco-produto'>{e?.preco}</div>
-                                            <div className='pagamento-produto'>À vista no PIX</div>
-                                        </div>
-                                    </Link>
-                                )
-                            })}
+                        <div className='conteiner-arrow-left' style={{ zIndex: 9999, backgroundColor: "#f2f2f2", width: 52, left: 0, height: "100%" }}>
+                            <FontAwesomeIcon className='arrowLeft' style={{ fontSize: "2rem", cursor: "pointer", marginLeft: "10px", color: "#9d9d9dcf" }} icon={faArrowLeft} onClick={() => Left()} />
                         </div>
+                        <div className='container-carroussel-cards'>
+                            <div className='container-cards' style={{ transform: `translateX(${posicao}%)` }} >
+                                {data[0]?.map((e) => {
+                                    return (
+                                        <Link key={e.id} to="/detalhar" className='cards' style={{ textDecoration: "none" }} onClick={() => localItens(e)}>
+                                            <div>
+                                                <img src={`data:image/png;base64,${e?.imagem}`} />
+                                                <div className='nome-produto'>{e?.nome}</div>
+                                            </div>
+                                            <div>
+                                                <div className='preco-produto'>{e?.preco}</div>
+                                                <div className='pagamento-produto'>À vista no PIX</div>
+                                            </div>
+                                        </Link>
+                                    )
+                                })}
+                            </div>
+
+                        </div>
+                        <div className='conteiner-arrow-right' style={{ zIndex: 9999, backgroundColor: "#f2f2f2", width: 50, right: 0, height: "100%" }}>
+                            <FontAwesomeIcon className='arrowRigth' style={{ fontSize: "2rem", cursor: "pointer", marginRight: "10px", color: "#9d9d9dcf" }} icon={faArrowRight} onClick={() => Rigth()} />
+                        </div>
+                    </div>
+                    <div className="container-imagems-promocao">
+                        <img src={require('../../img/promocao1.png')} alt="" />
+                        <img src={require('../../img/promocao2.png')} alt="" />
                     </div>
                 </div>
             }

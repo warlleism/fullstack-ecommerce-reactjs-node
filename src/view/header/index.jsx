@@ -45,7 +45,6 @@ const Header = () => {
         setSearchFilter(newFilter)
     }
 
-
     const localItens = (value) => {
         setInputTexto("")
         setDados(value)
@@ -55,9 +54,6 @@ const Header = () => {
         localStorage.setItem("preco", value.preco)
         localStorage.setItem("estrelas", value.estrelas)
     }
-
-
-
 
     return (
         <>
@@ -86,7 +82,6 @@ const Header = () => {
                             :
                             false
                     }
-
                 </div>
                 <div className='content-conteiner'>
                     <FontAwesomeIcon icon={faCircleUser} className="icon" />
