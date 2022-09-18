@@ -1,13 +1,12 @@
-import BuscarMes from '../../util/mes';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 import { useContext, useEffect, useState } from 'react';
 import { ColorRing } from 'react-loader-spinner';
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
-import Header from '../header';
 import { Context } from "../../context/provider";
-
+import { Link } from 'react-router-dom';
+import BuscarMes from '../../util/mes';
+import Header from '../header';
 
 import './style.scss'
 
@@ -24,17 +23,17 @@ const Home = () => {
     const [data, setData] = useState([])
     const date = new Date();
     const mes = date.getMonth() + 1;
-    const [posicao, setPosicao] = useState(0)
+    const [posicao, setPosicao] = useState(1.2)
     const [posicaoMobile, setPosicaoMobile] = useState(0)
 
     const { setDados } = useContext(Context);
 
     const Left = () => {
-        posicao == 0 ? setPosicao(-23) : setPosicao(parseInt(posicao + 23))
+        posicao == 1.2 ? setPosicao(-24) : setPosicao(parseInt(posicao + 13))
     }
 
     const Rigth = () => {
-        posicao == -23 ? setPosicao(0) : setPosicao(parseInt(posicao - 23))
+        posicao == -24 ? setPosicao(1.2) : setPosicao(parseInt(posicao - 13))
     }
 
     const LeftMobile = () => {
@@ -56,8 +55,7 @@ const Home = () => {
 
     return (
         <>
-            {console.log(posicaoMobile)}
-            {/* <Header /> */}
+            <Header />
             {data?.length == 0 ?
                 <div style={{ height: "100vh", width: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <ColorRing
@@ -73,9 +71,10 @@ const Home = () => {
                 :
                 <div className='main-conteiner-cards'>
                     <div className='play-content'><div>{BuscarMes(mes)} TECH</div></div>
+
                     <div className='conteiner-carrousel'>
                         <div className='conteiner-arrow-left' style={{ zIndex: 9999, backgroundColor: "#f2f2f2", width: 52, left: 0, height: "100%" }}>
-                            <FontAwesomeIcon className='arrowLeft' style={{ fontSize: "2rem", cursor: "pointer", marginLeft: "10px", color: "#9d9d9dcf" }} icon={faArrowLeft} onClick={() => Left()} />
+                            <FontAwesomeIcon className='arrowLeft' style={{ fontSize: "2rem", cursor: "pointer", marginLeft: "10px", color: "#9d9d9dcf", borderRadius: 30, boxSizing: "border-box", padding: 7, backgroundColor: "#ffff" }} icon={faArrowLeft} onClick={() => Left()} />
                         </div>
                         <div className='container-carroussel-cards'>
                             <div className='container-cards' style={{ transform: `translateX(${posicao}%)` }} >
@@ -95,14 +94,16 @@ const Home = () => {
                                 })}
                             </div>
                         </div>
+
                         <div className='conteiner-arrow-right' style={{ zIndex: 9999, backgroundColor: "#f2f2f2", width: 50, right: 0, height: "100%" }}>
-                            <FontAwesomeIcon className='arrowRigth' style={{ fontSize: "2rem", cursor: "pointer", marginRight: "10px", color: "#9d9d9dcf" }} icon={faArrowRight} onClick={() => Rigth()} />
+                            <FontAwesomeIcon className='arrowRigth' style={{ fontSize: "2rem", cursor: "pointer", marginRight: "10px", color: "#9d9d9dcf", borderRadius: 30, boxSizing: "border-box", padding: 7, backgroundColor: "#ffff" }} icon={faArrowRight} onClick={() => Rigth()} />
                         </div>
+
                     </div>
 
-                    <div style={{ display: 'flex' }}>
+                    <div className="container-mobile-carroussel">
                         <div className='conteiner-arrow-right' style={{ display: 'flex', alignItems: 'center', position: 'absolute', left: 0, zIndex: 9999, backgroundColor: "#f2f2f2", width: 50, right: 0, height: "44%" }}>
-                            <FontAwesomeIcon className='arrowLeft' style={{ fontSize: "2rem", cursor: "pointer", marginRight: "10px", color: "#9d9d9dcf" }} icon={faArrowLeft} onClick={() => LeftMobile()} />
+                            <FontAwesomeIcon className='arrowLeft' style={{ fontSize: "2rem", cursor: "pointer", marginLeft: 8, color: "#9d9d9dcf", borderRadius: 30, boxSizing: "border-box", padding: 7, backgroundColor: "#ffff" }} icon={faArrowLeft} onClick={() => LeftMobile()} />
                         </div>
                         <div className='container-carroussel-cards-mobile' style={{ transform: `translateX(${posicaoMobile}vw)` }}>
                             {data[0]?.map((e) => {
@@ -115,7 +116,7 @@ const Home = () => {
                             })}
                         </div>
                         <div className='conteiner-arrow-right' style={{ display: 'flex', alignItems: 'center', position: 'absolute', rigth: 0, zIndex: 9999, backgroundColor: "#f2f2f2", width: 50, right: 0, height: "44%" }}>
-                            <FontAwesomeIcon className='arrowRigth' style={{ fontSize: "2rem", cursor: "pointer", marginRight: "10px", color: "#9d9d9dcf" }} icon={faArrowRight} onClick={() => RigthMobile()} />
+                            <FontAwesomeIcon className='arrowRigth' style={{ fontSize: "2rem", cursor: "pointer", color: "#9d9d9dcf", marginLeft: 10, borderRadius: 30, boxSizing: "border-box", padding: 7, backgroundColor: "#ffff" }} icon={faArrowRight} onClick={() => RigthMobile()} />
                         </div>
                     </div>
 
@@ -123,6 +124,7 @@ const Home = () => {
                         <img src={require('../../img/promocao1.png')} alt="" />
                         <img src={require('../../img/promocao2.png')} alt="" />
                     </div>
+
                 </div>
             }
 

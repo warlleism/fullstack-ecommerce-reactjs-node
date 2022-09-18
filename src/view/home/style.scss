@@ -101,35 +101,40 @@
     }
 }
 
-.container-carroussel-cards-mobile {
-    display: flex;
-    flex-direction: row;
-    width: 7925px;
-    height: 300px;
+.container-mobile-carroussel {
+    display: none;
 
-    transition: .2s ease-in-out;
-    scroll-behavior: smooth;
-
-    .cards-mobile {
-        width: 100vw;
+    .container-carroussel-cards-mobile {
         display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-        background-color: white;
+        flex-direction: row;
+        width: 7925px;
+        height: 300px;
 
-        img {
-            max-width: 180px;
-        }
+        transition: .2s ease-in-out;
+        scroll-behavior: smooth;
 
-        .nome-produto {
-            text-align: center;
-            width: 200px;
-            font-size: 0.9rem;
-            color: rgba(0, 0, 0, 0.535);
-            margin-top: 20px;
+        .cards-mobile {
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            background-color: white;
+
+            img {
+                max-width: 180px;
+            }
+
+            .nome-produto {
+                text-align: center;
+                width: 200px;
+                font-size: 0.9rem;
+                color: rgba(0, 0, 0, 0.535);
+                margin-top: 20px;
+            }
         }
     }
+
 }
 
 
@@ -202,5 +207,10 @@
         .conteiner-carrousel {
             display: none;
         }
+    }
+
+    .container-mobile-carroussel {
+        display: block;
+        display: flex;
     }
 }
