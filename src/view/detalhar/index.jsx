@@ -1,17 +1,18 @@
 import { ColorRing } from 'react-loader-spinner';
 import { Context } from "../../context/provider";
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons"
 import { faStar } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Header from '../header';
 
 import './style.scss'
-import { useEffect } from 'react';
 
 const Detalhar = () => {
 
     const { dados } = useContext(Context);
+    const { carrinho } = useContext(Context);
+    const { setCarrinho } = useContext(Context);
 
     const arrayQtdEstrelas = []
 
@@ -21,14 +22,18 @@ const Detalhar = () => {
 
         const valor = estrelasQtd
 
-
         for (let i = 0; i < valor; i++) {
             arrayQtdEstrelas.push(i)
         }
     }
 
+    function funcCarrinho(valor) {
+        setCarrinho([...carrinho, { data: valor }])
+    }
+
     return (
         <>
+            {console.log(carrinho)}
             {Stars()}
             <Header />
             {dados?.length == 0 ?
@@ -74,7 +79,7 @@ const Detalhar = () => {
                                     <button>Ok</button>
                                 </div>
                             </div>
-                            <div className='botao-comprar'><FontAwesomeIcon style={{ fontSize: "1.3rem", cursor: "pointer", color: "#ffff", marginRight: 10 }} icon={faCartShopping} />Comprar</div>
+                            <div className='botao-comprar' onClick={() => funcCarrinho(dados)}><FontAwesomeIcon style={{ fontSize: "1.3rem", cursor: "pointer", color: "#ffff", marginRight: 10 }} icon={faCartShopping} />Comprar</div>
                             <div style={{ color: "#0000009f" }}>Este produto é vendido e entregue por Tecnolink.</div>
                         </div>
                     </div>
