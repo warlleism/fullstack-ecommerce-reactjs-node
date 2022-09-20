@@ -31,9 +31,14 @@ const addCarrinho = async (id, nome, preco, quantidade) => {
     const conn = await connect();
     return await conn.query(`insert into carrinho (id, nome, preco, quantidade) values (${id},${nome},${preco},${quantidade})`);
 }
+
 const listarProdutoCarrinho = async () => {
     const conn = await connect();
-    return await conn.query(`select i.imagem, c.nome, c.preco, c.quantidade from itens as i inner join carrinho as c on c.id = i.id`);
+    return await conn.query(`select i.id, i.imagem, c.nome, c.preco, c.quantidade from itens as i inner join carrinho as c on c.id = i.id`);
+}
+const aumentarProdutoCarrinho = async (quantidade, id) => {
+    const conn = await connect();
+    return await conn.query(`update carrinho set quantidade = ${quantidade} where id = ${id}`);
 }
 
 const listarProdutoId = async (valor) => {
@@ -44,4 +49,4 @@ const listarProdutoId = async (valor) => {
 
 connect();
 
-module.exports = { listarProduto, listarTipos, listarProdutoId, listarDestaques, addCarrinho, listarProdutoCarrinho }
+module.exports = { listarProduto, listarTipos, listarProdutoId, listarDestaques, addCarrinho, listarProdutoCarrinho, aumentarProdutoCarrinho }

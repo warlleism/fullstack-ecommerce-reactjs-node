@@ -40,10 +40,16 @@
         const clientes = await db.addCarrinho(req?.params?.id, req?.params?.nome, req?.params?.preco, req?.params?.quantidade)
         res.send(clientes)
     })
-    
+
     //Rota para listar produtos no carrinho
     app.get('/carrinho/listar', async (req, res) => {
         const clientes = await db.listarProdutoCarrinho()
+        res.send(clientes)
+    })
+
+    //Rota para aumentar quantidade de produto no carrinho
+    app.post('/carrinho/:quantidade/:id', async (req, res) => {
+        const clientes = await db.aumentarProdutoCarrinho(req?.params?.quantidade, req?.params?.id)
         res.send(clientes)
     })
 
