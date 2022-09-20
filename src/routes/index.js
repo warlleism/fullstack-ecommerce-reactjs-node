@@ -1,8 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 const Listagem = React.lazy(() => import('../view/listagem'))
-const Home = React.lazy(() => import('../view/home'))
 const Detalhar = React.lazy(() => import('../view/detalhar'))
+const Carrinho = React.lazy(() => import('../view/carrinho'))
+const Home = React.lazy(() => import('../view/home'))
 
 
 export default function Rotas() {
@@ -29,6 +30,13 @@ export default function Rotas() {
                     element={
                         <React.Suspense fallback='Carregando...'>
                             <Detalhar />
+                        </React.Suspense>
+                    } />
+
+                <Route path="/carrinho"
+                    element={
+                        <React.Suspense fallback='Carregando...'>
+                            <Carrinho />
                         </React.Suspense>
                     } />
 

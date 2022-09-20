@@ -1,4 +1,4 @@
-.main-container-detalhar {
+.main-container-carrinho {
     width: 93.5%;
     margin: 0 auto;
     display: flex;
@@ -8,26 +8,46 @@
         width: 100%;
         display: flex;
         border-radius: 10px;
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
         margin: 20px 0px 20px 0px;
 
-        .conteiner-produto-detalhar {
+        .conteiner-produto-carrinho {
             width: 60%;
             padding: 40px;
             display: flex;
             margin-right: 10px;
             border-radius: 10px;
+            margin-bottom: 20px;
+            align-items: center;
             flex-direction: row;
             box-sizing: border-box;
             background-color: white;
 
+            .quantidade {
+                display: flex;
+                width: 8%;
+                padding: 5px;
+                align-items: center;
+                height: 30px;
+                justify-content: space-between;
+                border: solid #0b074454 2px;
+                border-radius: 5px;
+
+                .operadores {
+                    cursor: pointer;
+                    font-size: 1.4rem;
+                }
+            }
+
             .conteiner-imagem {
-                width: 50%;
+                width: 25%;
                 margin-right: 40px;
 
                 img {
+                    max-width: 200px;
                     border-radius: 10px;
-                    width: 100%;
                 }
             }
 
@@ -38,14 +58,14 @@
                     display: flex;
                 }
 
-                .nome-produto-detalhar {
+                .nome-produto-carrinho {
                     margin: 40px 0px 40px 0px;
-                    font-size: 1.4rem;
+                    font-size: 1rem;
                     font-weight: 600;
                     color: rgba(0, 0, 0, 0.747);
                 }
 
-                .descricao-produto-detalhar {
+                .descricao-produto-carrinho {
                     font-size: 0.9rem;
                     width: 90%;
                     color: rgba(0, 0, 0, 0.747);
@@ -63,7 +83,7 @@
             background-color: white;
             justify-content: space-around;
 
-            .preco-produto-detalhar {
+            .preco-produto-carrinho {
                 font-weight: 600;
                 font-size: 1.8rem;
                 color: rgba(0, 0, 0, 0.87);
@@ -78,7 +98,6 @@
                 font-size: 1.4rem;
                 border-radius: 7px;
                 align-items: center;
-                text-decoration: none;
                 justify-content: center;
                 background-color: #180b41;
             }

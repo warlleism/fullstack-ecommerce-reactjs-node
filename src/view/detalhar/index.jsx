@@ -8,6 +8,7 @@ import Header from '../header';
 
 import './style.scss'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Detalhar = () => {
 
@@ -30,13 +31,17 @@ const Detalhar = () => {
 
 
     const funcCarrinho = async (id, nome, preco, quantidade) => {
-        const res = await axios.post(`http://localhost:3001/carrinho/${parseInt(id)}/"${nome}"/"${preco}"/${quantidade}`)
+        var nomedado = nome;
+        var nomeReplaceSimples = nomedado.replace(/'/g, '');
+        var nomeReplaceDupla = nomeReplaceSimples.replace(/"/g, "");
+        console.log(nomeReplaceDupla)
+        const res = await axios.post(`http://localhost:3001/carrinho/${parseInt(id)}/"${nomeReplaceDupla}"/"${preco}"/${quantidade}`)
         console.log(res)
     }
 
     return (
         <>
-            {console.log(localStorage.getItem("id"))}
+
             {Stars()}
             <Header />
             {dados?.length == 0 ?
@@ -82,7 +87,9 @@ const Detalhar = () => {
                                     <button>Ok</button>
                                 </div>
                             </div>
-                            <div className='botao-comprar' onClick={() => funcCarrinho(localStorage.getItem("id"), localStorage.getItem("nome"), localStorage.getItem("preco"), 1)}><FontAwesomeIcon style={{ fontSize: "1.3rem", cursor: "pointer", color: "#ffff", marginRight: 10 }} icon={faCartShopping} />Comprar</div>
+                            <Link to="/carrinho" className='botao-comprar' onClick={() => funcCarrinho(localStorage.getItem("id"), localStorage.getItem("nome"),
+                                localStorage.getItem("preco"), 1)}><FontAwesomeIcon style={{ fontSize: "1.3rem", cursor: "pointer", color: "#ffff", marginRight: 10 }} icon={faCartShopping} />Comprar
+                            </Link>
                             <div style={{ color: "#0000009f" }}>Este produto é vendido e entregue por Tecnolink.</div>
                         </div>
                     </div>

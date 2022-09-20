@@ -88,8 +88,10 @@ const Header = () => {
                 <div className='content-conteiner'>
                     <FontAwesomeIcon icon={faCircleUser} className="icon" />
                     <div style={{ position: 'relative' }}>
-                        <FontAwesomeIcon icon={faCartShopping} className="icon" />
-                        <div style={{ position: 'absolute', top: -20, right: -20, color: "#ffff", background: "#ff00a64f", padding: "3px 9px", borderRadius: 100 }}>{carrinho.length}</div>
+                        <Link to="/carrinho" >
+                            <FontAwesomeIcon icon={faCartShopping} className="icon" />
+                            <div style={{ position: 'absolute', top: -20, right: -20, color: "#ffff", background: "#ff00a64f", padding: "3px 9px", borderRadius: 100 }}>{carrinho == 0 ? 0 : carrinho}</div>
+                        </Link>
                     </div>
                     <FontAwesomeIcon icon={faHeadset} className="icon" />
                 </div>
