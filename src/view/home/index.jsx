@@ -20,9 +20,9 @@ const Home = () => {
             })
     }, [])
 
-    const [data, setData] = useState([])
     const date = new Date();
     const mes = date.getMonth() + 1;
+    const [data, setData] = useState([])
     const [posicao, setPosicao] = useState(1.2)
     const [posicaoMobile, setPosicaoMobile] = useState(0)
 
@@ -47,6 +47,7 @@ const Home = () => {
     const localItens = (value) => {
         setDados(value)
         localStorage.setItem("imagem", value.imagem)
+        localStorage.setItem("id", value.id)
         localStorage.setItem("nome", value.nome)
         localStorage.setItem("descricao", value.descricao)
         localStorage.setItem("preco", value.preco)

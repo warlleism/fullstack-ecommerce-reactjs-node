@@ -17,6 +17,7 @@ const Header = () => {
 
     const { setId } = useContext(Context);
     const { setDados } = useContext(Context);
+    const { carrinho } = useContext(Context);
 
     useEffect(() => {
         fetch("http://localhost:3001/tipos")
@@ -49,6 +50,7 @@ const Header = () => {
         setInputTexto("")
         setDados(value)
         localStorage.setItem("imagem", value.imagem)
+        localStorage.setItem("id", value.id)
         localStorage.setItem("nome", value.nome)
         localStorage.setItem("descricao", value.descricao)
         localStorage.setItem("preco", value.preco)
@@ -85,7 +87,10 @@ const Header = () => {
                 </div>
                 <div className='content-conteiner'>
                     <FontAwesomeIcon icon={faCircleUser} className="icon" />
-                    <FontAwesomeIcon icon={faCartShopping} className="icon" />
+                    <div style={{ position: 'relative' }}>
+                        <FontAwesomeIcon icon={faCartShopping} className="icon" />
+                        <div style={{ position: 'absolute', top: -20, right: -20, color: "#ffff", background: "#ff00a64f", padding: "3px 9px", borderRadius: 100 }}>{carrinho.length}</div>
+                    </div>
                     <FontAwesomeIcon icon={faHeadset} className="icon" />
                 </div>
             </div>

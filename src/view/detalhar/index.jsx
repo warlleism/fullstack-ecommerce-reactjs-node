@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Header from '../header';
 
 import './style.scss'
+import axios from 'axios';
 
 const Detalhar = () => {
 
@@ -27,17 +28,19 @@ const Detalhar = () => {
         }
     }
 
-    function funcCarrinho(valor) {
-        setCarrinho([...carrinho, { data: valor }])
+
+    const funcCarrinho = async (id, nome, preco, quantidade) => {
+        const res = await axios.post(`http://localhost:3001/carrinho/${parseInt(id)}/"${nome}"/"${preco}"/${quantidade}`)
+        console.log(res)
     }
 
     return (
         <>
-            {console.log(carrinho)}
+            {console.log(localStorage.getItem("id"))}
             {Stars()}
             <Header />
             {dados?.length == 0 ?
-                < div style={{ height: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ height: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <ColorRing
                         visible={true}
                         height="130"
@@ -79,7 +82,7 @@ const Detalhar = () => {
                                     <button>Ok</button>
                                 </div>
                             </div>
-                            <div className='botao-comprar' onClick={() => funcCarrinho(dados)}><FontAwesomeIcon style={{ fontSize: "1.3rem", cursor: "pointer", color: "#ffff", marginRight: 10 }} icon={faCartShopping} />Comprar</div>
+                            <div className='botao-comprar' onClick={() => funcCarrinho(localStorage.getItem("id"), localStorage.getItem("nome"), localStorage.getItem("preco"), 1)}><FontAwesomeIcon style={{ fontSize: "1.3rem", cursor: "pointer", color: "#ffff", marginRight: 10 }} icon={faCartShopping} />Comprar</div>
                             <div style={{ color: "#0000009f" }}>Este produto é vendido e entregue por Tecnolink.</div>
                         </div>
                     </div>

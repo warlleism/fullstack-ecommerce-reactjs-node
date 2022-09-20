@@ -22,6 +22,7 @@ const Listagem = () => {
     const localItens = (value) => {
         setDados(value)
         localStorage.setItem("imagem", value.imagem)
+        localStorage.setItem("id", value.id)
         localStorage.setItem("nome", value.nome)
         localStorage.setItem("descricao", value.descricao)
         localStorage.setItem("preco", value.preco)

@@ -35,6 +35,18 @@
         res.send(clientes)
     })
 
+    //Rota para adicionar produto ao carrinho
+    app.post('/carrinho/:id/:nome/:preco/:quantidade', async (req, res) => {
+        const clientes = await db.addCarrinho(req?.params?.id, req?.params?.nome, req?.params?.preco, req?.params?.quantidade)
+        res.send(clientes)
+    })
+    
+    //Rota para listar produtos no carrinho
+    app.get('/carrinho/listar', async (req, res) => {
+        const clientes = await db.listarProdutoCarrinho()
+        res.send(clientes)
+    })
+
     //Rota para listagem produto pelo id
     app.get('/listar/:id', async (req, res) => {
         const clientes = await db.listarProdutoId(req?.params?.id)
