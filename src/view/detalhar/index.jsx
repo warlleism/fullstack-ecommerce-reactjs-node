@@ -30,18 +30,35 @@ const Detalhar = () => {
     }
 
 
-    const funcCarrinho = async (id, nome, preco, quantidade) => {
+    const setDados = async (id, nome, preco, quantidade) => {
         var nomedado = nome;
         var nomeReplaceSimples = nomedado.replace(/'/g, '');
         var nomeReplaceDupla = nomeReplaceSimples.replace(/"/g, "");
-        console.log(nomeReplaceDupla)
         const res = await axios.post(`http://localhost:3001/carrinho/${parseInt(id)}/"${nomeReplaceDupla}"/"${preco}"/${quantidade}`)
         console.log(res)
     }
 
+    const funcCarrinho = async (id, nome, preco, quantidade) => {
+        const resCarrinho = await axios(`http://localhost:3001/carrinho/listar`)
+
+        let verificar = []
+        resCarrinho.data[0]?.filter((valor) => {
+            verificar.push(valor.id)
+        })
+        let ver = verificar.includes(parseInt(id))
+        console.log(ver)
+
+        if (ver == true) {
+            console.log("item ja existe")
+        } else {
+            setDados(id, nome, preco, quantidade)
+        }
+    }
+
+
+
     return (
         <>
-
             {Stars()}
             <Header />
             {dados?.length == 0 ?

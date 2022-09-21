@@ -24,19 +24,21 @@ const Carrinho = () => {
     }, [acumulador])
 
     const setarQuantidade = async (quantidade, id) => {
+        if (quantidade < 1) {
+            return
+        }
         setAcumulador(acumulador + 1)
         const res = await axios.post(`http://localhost:3001/carrinho/${quantidade}/${id}`)
-        console.log(res)
     }
 
     useEffect(() => {
         setCarrinho(data[0]?.length)
-
         const reduceSalarios = data[0]?.reduce((valor, valorAtual) => valor + parseInt(valorAtual?.preco?.replace(/\D+/g, '')) * valorAtual?.quantidade, 0)
-        setValor(reduceSalarios)
-
+        let price = reduceSalarios?.toString()
+        price = price?.replace(/(\d{1})/, '$1,')
+        price = price?.replace(/(\d{3}(?!$))/g, '$1.')
+        setValor(price)
     }, [data])
-
 
     return (
         <>
@@ -60,13 +62,11 @@ const Carrinho = () => {
                             data[0]?.map((dados) => {
                                 return (
                                     <div className='conteiner-produto-carrinho'>
-                                        {console.log(dados)}
                                         <div className='conteiner-imagem'>
                                             <img src={`data:image/png;base64,${dados?.imagem}`} />
                                         </div>
                                         <div className='container-descricao'>
                                             <div className='nome-produto-carrinho'>{dados?.nome}</div>
-                                            <div>R$ {valor ? valor : 0}</div>
                                         </div>
                                         <div className='quantidade'>
                                             <div className='operadores' onClick={() => setarQuantidade(dados?.quantidade - 1, dados?.id)}>-</div>
@@ -77,6 +77,22 @@ const Carrinho = () => {
                                 )
                             })
                         }
+                    </div>
+                    <div className='container-preco-total'>
+                        <div className='resumo'>
+                            <div className='titulo-resumo'>Resumo do pedido</div>
+                            <div className='quantidade-produtos'>
+                                <div>{data[0]?.length} produtos</div>
+                                <div>{valor}</div>
+                            </div>
+                        </div>
+                        <div className='resumo-valor-total'>
+                            <div>Total</div>
+                            <div>{valor}</div>
+                        </div>
+                        <div className='botao-continuar'>
+                            continuar
+                        </div>
                     </div>
                 </div>
             }
