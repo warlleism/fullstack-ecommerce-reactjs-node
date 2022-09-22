@@ -9,7 +9,7 @@
 
     .container-preco-total {
         width: 20%;
-        height: 30vh;
+        height: 295px;
         display: flex;
         padding: 20px;
         font-size: 20px;
@@ -77,16 +77,16 @@
             margin-bottom: 20px;
             align-items: center;
             flex-direction: row;
-            justify-content: space-between;
             box-sizing: border-box;
             background-color: white;
+            justify-content: space-between;
 
             .container-quantidade {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 cursor: pointer;
-                
+
                 .quantidade {
                     display: flex;
                     width: 100%;
@@ -109,7 +109,7 @@
                 margin-right: 40px;
 
                 img {
-                    max-width: 200px;
+                    width: 100%;
                     border-radius: 10px;
                 }
             }
@@ -205,6 +205,77 @@
                         border: solid 1px #180b41;
                         background-color: transparent;
                     }
+                }
+            }
+
+        }
+    }
+}
+
+@media screen and (max-width: 1365px) {
+    .main-container-carrinho {
+        flex-direction: column;
+
+        .container-nome-preco-imagem {
+            width: 100%;
+
+            .conteiner-produto-carrinho {
+                height: 200px;
+                justify-content: space-around;
+
+                .container-descricao {
+                    .nome-produto-carrinho {
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+
+            .conteiner-imagem {
+                margin-right: 0px !important;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+
+        .container-preco-total {
+            width: 100%;
+        }
+    }
+
+}
+
+@media screen and (max-width: 469px) {
+    .main-container-carrinho {
+        .container-nome-preco-imagem {
+            .conteiner-produto-carrinho {
+                flex-direction: column;
+                height: 100%;
+                .conteiner-imagem {
+                    margin-top: -30px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+
+                    img {
+                        width: 100px !important;
+                    }
+                }
+
+                .container-descricao {
+                    width: 100%;
+
+                    .nome-produto-carrinho {
+                        margin: 0px 0px 0px 0px;
+                        text-align: center;
+                        width: 100%;
+                    }
+                }
+
+                .container-quantidade {
+                    margin-top: 10px;
                 }
             }
 

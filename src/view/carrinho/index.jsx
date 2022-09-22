@@ -83,7 +83,6 @@ const Carrinho = () => {
                                                         </div>
                                                         <div onClick={() => deletarProduto(dados?.id)}>remover</div>
                                                     </div>
-
                                                 </div>
                                             )
                                         })
