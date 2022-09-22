@@ -19,6 +19,7 @@ const Header = () => {
     const { setId } = useContext(Context);
     const { setDados } = useContext(Context);
     const { carrinho } = useContext(Context);
+    const { mobileBar,setMobileBar } = useContext(Context);
 
     useEffect(() => {
         fetch("http://localhost:3001/tipos")
@@ -28,6 +29,7 @@ const Header = () => {
             })
     }, [])
 
+
     useEffect(() => {
         fetch("http://localhost:3001/listar")
             .then((res) => res.json())
@@ -35,7 +37,6 @@ const Header = () => {
                 setHandler(data[0])
             })
         handlesFilter()
-
         document.addEventListener("click", () => setInputTexto(""))
     }, [inputTexto])
 
@@ -56,6 +57,11 @@ const Header = () => {
         localStorage.setItem("descricao", value.descricao)
         localStorage.setItem("preco", value.preco)
         localStorage.setItem("estrelas", value.estrelas)
+    }
+
+    const linkFunc = (dado) => {
+        setId(dado)
+        setMobileBar(false)
     }
 
     return (
@@ -92,11 +98,12 @@ const Header = () => {
                         <div>{carrinho == 0 ? 0 : carrinho}</div>
                     </Link>
                     <FontAwesomeIcon icon={faHeadset} className="icon headset" />
-                    <FontAwesomeIcon icon={faBars} className="icon bars" style={{outline: "none"}} />
+                    <FontAwesomeIcon icon={faBars} className="icon bars" id='togler-close-padrao' style={{ outline: "none" }} onClick={() => setMobileBar(!mobileBar)} />
                 </div>
             </div>
+
             <div className='container-lista-links'>
-                <ul className='container-lista'>
+                <div className='container-lista'>
                     {
                         data[0]?.map(dados => {
                             return (
@@ -106,8 +113,29 @@ const Header = () => {
                             )
                         })
                     }
-                </ul>
+                </div>
             </div>
+            <div>
+                {mobileBar &&
+                    (
+                        <div className='container-lista-links-mobile'>
+                            <div className='container-lista-mobile'>
+                                {
+                                    data[0]?.map(dados => {
+                                        return (
+                                            <Link to="/listagem" key={dados.id} onClick={() => linkFunc(dados?.id)} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                                {dados?.nome}
+                                            </Link>
+                                        )
+                                    })
+                                }
+                            </div>
+                        </div>
+                    )
+                }
+            </div>
+
+
             <div className='imagem-oferta' >
                 <img src={require("../../img/oferta.png")} />
             </div>

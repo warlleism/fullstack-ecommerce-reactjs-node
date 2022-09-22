@@ -10,8 +10,9 @@ import axios from 'axios';
 const Carrinho = () => {
 
     const [data, setData] = useState([]);
-    const { setCarrinho } = useContext(Context);
     const [valor, setValor] = useState()
+    const { setCarrinho } = useContext(Context);
+    const { mobileBar } = useContext(Context);
 
     const [acumulador, setAcumulador] = useState(0)
 
@@ -40,6 +41,7 @@ const Carrinho = () => {
         setValor(price)
     }, [data])
 
+
     return (
         <>
             <Header />
@@ -56,45 +58,51 @@ const Carrinho = () => {
                     />
                 </div>
                 :
-                <div className='main-container-carrinho'>
-                    <div className='container-nome-preco-imagem'>
-                        {
-                            data[0]?.map((dados) => {
-                                return (
-                                    <div className='conteiner-produto-carrinho'>
-                                        <div className='conteiner-imagem'>
-                                            <img src={`data:image/png;base64,${dados?.imagem}`} />
-                                        </div>
-                                        <div className='container-descricao'>
-                                            <div className='nome-produto-carrinho'>{dados?.nome}</div>
-                                        </div>
-                                        <div className='quantidade'>
-                                            <div className='operadores' onClick={() => setarQuantidade(dados?.quantidade - 1, dados?.id)}>-</div>
-                                            <div>{dados?.quantidade}</div>
-                                            <div className='operadores' onClick={() => setarQuantidade(dados?.quantidade + 1, dados?.id)}>+</div>
+                <>
+                    {mobileBar == false &&
+                        (
+                            <div className='main-container-carrinho'>
+                                <div className='container-nome-preco-imagem'>
+                                    {
+                                        data[0]?.map((dados) => {
+                                            return (
+                                                <div className='conteiner-produto-carrinho'>
+                                                    <div className='conteiner-imagem'>
+                                                        <img src={`data:image/png;base64,${dados?.imagem}`} />
+                                                    </div>
+                                                    <div className='container-descricao'>
+                                                        <div className='nome-produto-carrinho'>{dados?.nome}</div>
+                                                    </div>
+                                                    <div className='quantidade'>
+                                                        <div className='operadores' onClick={() => setarQuantidade(dados?.quantidade - 1, dados?.id)}>-</div>
+                                                        <div>{dados?.quantidade}</div>
+                                                        <div className='operadores' onClick={() => setarQuantidade(dados?.quantidade + 1, dados?.id)}>+</div>
+                                                    </div>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
+                                <div className='container-preco-total'>
+                                    <div className='resumo'>
+                                        <div className='titulo-resumo'>Resumo do pedido</div>
+                                        <div className='quantidade-produtos'>
+                                            <div>{data[0]?.length} produtos</div>
+                                            <div>{valor}</div>
                                         </div>
                                     </div>
-                                )
-                            })
-                        }
-                    </div>
-                    <div className='container-preco-total'>
-                        <div className='resumo'>
-                            <div className='titulo-resumo'>Resumo do pedido</div>
-                            <div className='quantidade-produtos'>
-                                <div>{data[0]?.length} produtos</div>
-                                <div>{valor}</div>
+                                    <div className='resumo-valor-total'>
+                                        <div>Total</div>
+                                        <div>{valor}</div>
+                                    </div>
+                                    <div className='botao-continuar'>
+                                        continuar
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div className='resumo-valor-total'>
-                            <div>Total</div>
-                            <div>{valor}</div>
-                        </div>
-                        <div className='botao-continuar'>
-                            continuar
-                        </div>
-                    </div>
-                </div>
+                        )
+                    }
+                </>
             }
         </>
     );

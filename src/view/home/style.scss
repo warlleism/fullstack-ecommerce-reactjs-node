@@ -89,9 +89,9 @@
     .container-imagems-promocao {
         width: 100%;
         display: flex;
-        justify-content: center;
         margin-top: 50px;
         margin-bottom: 50px;
+        justify-content: center;
 
         img {
             width: 100%;
@@ -145,7 +145,7 @@
         flex-wrap: wrap;
 
         img {
-            z-index: 999999999999;
+            // z-index: 999999999999;
             width: 70%;
             height: 200px !important;
         }
@@ -228,7 +228,7 @@
 
     .container-imagems-promocao {
         img {
-            z-index: 1;
+
             width: 70%;
             height: 100px !important;
         }

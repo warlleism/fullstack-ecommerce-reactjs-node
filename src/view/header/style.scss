@@ -14,7 +14,6 @@
     }
 
     .container-input {
-        position: relative;
         width: 30%;
         position: relative;
 
@@ -104,16 +103,15 @@
 }
 
 .container-lista-links {
-    background-color: #ff6500;
+    width: 100%;
     display: flex;
+    background-color: #ff6500;
     justify-content: center;
 
     .container-lista {
-        width: 50%;
+        width: 100%;
         display: flex;
-        list-style: none;
         flex-direction: row;
-        justify-content: space-between;
 
         a {
             font-weight: 500;
@@ -131,6 +129,37 @@
         a:hover {
             background-color: #833400;
             transition: .3s ease-in-out;
+        }
+    }
+}
+
+.container-lista-links-mobile {
+    right: 0;
+    width: 100vw;
+    height: 100%;
+    display: none;
+    transition: .5s;
+    z-index: 999999;
+    position: absolute;
+    justify-content: flex-end;
+    background-color: #ff6500;
+
+    .container-lista-mobile {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        
+        a {
+            font-weight: 500;
+            font-size: 0.9rem;
+            height: 100%;
+            padding: 7px;
+            text-decoration: none;
+            text-align: center;
+            width: 100%;
+            color: #ffff;
+            transition: .3s ease-in-out;
+
         }
     }
 }
@@ -204,6 +233,11 @@
         display: none;
     }
 
+    .container-lista-links-mobile {
+        display: none;
+        display: flex;
+        justify-content: center;
+    }
 
     .imagem-oferta {
 
@@ -212,6 +246,7 @@
         }
     }
 }
+
 
 @media screen and (max-width: 571px) {
 

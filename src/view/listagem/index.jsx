@@ -10,6 +10,7 @@ const Listagem = () => {
 
     const { id } = useContext(Context);
     const { setDados } = useContext(Context);
+    const { mobileBar } = useContext(Context);
 
     useEffect(() => {
         fetch(`http://localhost:3001/listar/${id ? id : 1}`)
@@ -47,24 +48,30 @@ const Listagem = () => {
                     />
                 </div>
                 :
-                <div className='main-container-listagem'>
-                    {data[0]?.map((e) => {
-                        return (
-                            <Link to="/detalhar" style={{ textDecoration: "none" }} onClick={() => localItens(e)}>
-                                <div className='conteiner-card'>
-                                    <div>
-                                        <img src={`data:image/png;base64,${e?.imagem}`} />
-                                        <div className='nome-produto'>{e?.nome}</div>
-                                    </div>
-                                    <div>
-                                        <div className='preco-produto'>{e?.preco}</div>
-                                        <div className='pagamento-produto'>À vista no PIX</div>
-                                    </div>
-                                </div>
-                            </Link>
-                        )
-                    })}
-                </div>
+                <>
+                    {mobileBar == false &&
+                        (
+                            <div className='main-container-listagem'>
+                                {data[0]?.map((e) => {
+                                    return (
+                                        <Link to="/detalhar" style={{ textDecoration: "none" }} onClick={() => localItens(e)}>
+                                            <div className='conteiner-card'>
+                                                <div>
+                                                    <img src={`data:image/png;base64,${e?.imagem}`} />
+                                                    <div className='nome-produto'>{e?.nome}</div>
+                                                </div>
+                                                <div>
+                                                    <div className='preco-produto'>{e?.preco}</div>
+                                                    <div className='pagamento-produto'>À vista no PIX</div>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    )
+                                })}
+                            </div>
+
+                        )}
+                </>
             }
         </>
     );
