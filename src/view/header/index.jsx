@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { faHeadset } from "@fortawesome/free-solid-svg-icons"
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons"
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons"
+import { faBars } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { Context } from "../../context/provider";
@@ -66,7 +67,6 @@ const Header = () => {
                 <div className='container-input'>
                     <input type="text" value={inputTexto} onChange={e => setInputTexto(e.target.value)} />
                     {inputTexto != '' ? false : <div className='texto-busque-aqui'>Busque aqui</div>}
-
                     {
                         inputTexto != '' ?
                             <div className='container-pesquisa' id='pesquisa'>
@@ -86,14 +86,13 @@ const Header = () => {
                     }
                 </div>
                 <div className='content-conteiner'>
-                    <FontAwesomeIcon icon={faCircleUser} className="icon" />
-                    <div style={{ position: 'relative' }}>
-                        <Link to="/carrinho" >
-                            <FontAwesomeIcon icon={faCartShopping} className="icon" />
-                            <div style={{ position: 'absolute', top: -20, right: -20, color: "#ffff", background: "#ff00a64f", padding: "3px 9px", borderRadius: 100 }}>{carrinho == 0 ? 0 : carrinho}</div>
-                        </Link>
-                    </div>
-                    <FontAwesomeIcon icon={faHeadset} className="icon" />
+                    <FontAwesomeIcon icon={faCircleUser} className="icon user" />
+                    <Link className='carrinho' to="/carrinho"  >
+                        <FontAwesomeIcon icon={faCartShopping} className="icon cart" />
+                        <div>{carrinho == 0 ? 0 : carrinho}</div>
+                    </Link>
+                    <FontAwesomeIcon icon={faHeadset} className="icon headset" />
+                    <FontAwesomeIcon icon={faBars} className="icon bars" style={{outline: "none"}} />
                 </div>
             </div>
             <div className='container-lista-links'>
@@ -109,8 +108,8 @@ const Header = () => {
                     }
                 </ul>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center', width: "100%" }}>
-                <img src={require("../../img/oferta.png")} style={{ width: "93.6%", cursor: "pointer" }} />
+            <div className='imagem-oferta' >
+                <img src={require("../../img/oferta.png")} />
             </div>
 
         </>

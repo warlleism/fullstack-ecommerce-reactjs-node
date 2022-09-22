@@ -120,12 +120,11 @@ const Home = () => {
                             <FontAwesomeIcon className='arrowRigth' style={{ fontSize: "2rem", cursor: "pointer", color: "#9d9d9dcf", marginLeft: 10, borderRadius: 30, boxSizing: "border-box", padding: 7, backgroundColor: "#ffff" }} icon={faArrowRight} onClick={() => RigthMobile()} />
                         </div>
                     </div>
-
+                    
                     <div className="container-imagems-promocao">
                         <img src={require('../../img/promocao1.png')} alt="" />
                         <img src={require('../../img/promocao2.png')} alt="" />
                     </div>
-
                 </div>
             }
 

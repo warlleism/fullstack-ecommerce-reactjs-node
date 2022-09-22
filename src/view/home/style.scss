@@ -1,8 +1,8 @@
 .main-conteiner-cards {
-    margin: 0 auto;
     width: 93.6%;
-    position: relative;
+    margin: 0 auto;
     overflow: hidden;
+    position: relative;
     background-color: #f2f2f2;
 
     .play-content {
@@ -10,8 +10,8 @@
         height: 90px;
         display: flex;
         color: #ffff;
-        font-size: 1.7rem;
         font-weight: 900;
+        font-size: 1.7rem;
         align-items: center;
         background-color: #ff6500;
 
@@ -21,8 +21,8 @@
     }
 
     .conteiner-carrousel {
-        display: flex;
         width: 100%;
+        display: flex;
         align-items: center;
         flex-direction: row;
         justify-content: center;
@@ -32,8 +32,8 @@
             overflow: hidden;
 
             .container-cards {
-                display: flex;
                 width: 115vw;
+                display: flex;
                 transition: .2s ease-in-out;
             }
 
@@ -88,9 +88,10 @@
 
     .container-imagems-promocao {
         width: 100%;
-        height: 200px;
         display: flex;
-        margin-bottom: 100px;
+        justify-content: center;
+        margin-top: 50px;
+        margin-bottom: 50px;
 
         img {
             width: 100%;
@@ -139,10 +140,23 @@
 
 
 
+@media screen and (max-width: 1615px) {
+    .container-imagems-promocao {
+        flex-wrap: wrap;
+
+        img {
+            z-index: 999999999999;
+            width: 70%;
+            height: 200px !important;
+        }
+    }
+}
+
 @media screen and (max-width: 1333px) {
     .conteiner-carrousel {
         .container-carroussel-cards {
             margin-left: 10px;
+
             .container-cards {
                 display: flex;
                 width: 53vw !important;
@@ -210,5 +224,13 @@
     .container-mobile-carroussel {
         display: block;
         display: flex;
+    }
+
+    .container-imagems-promocao {
+        img {
+            z-index: 1;
+            width: 70%;
+            height: 100px !important;
+        }
     }
 }
