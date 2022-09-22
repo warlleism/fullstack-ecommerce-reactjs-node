@@ -84,7 +84,7 @@ const Detalhar = () => {
                                                 {
                                                     arrayQtdEstrelas.map(() => {
                                                         return (
-                                                            <FontAwesomeIcon style={{ fontSize: "2rem", cursor: "pointer", color: "#f8f830" }} icon={faStar} />
+                                                            <FontAwesomeIcon className='stars-icon' style={{ fontSize: "2rem", cursor: "pointer", color: "#f8f830" }} icon={faStar} />
                                                         )
                                                     })
                                                 }
@@ -98,7 +98,7 @@ const Detalhar = () => {
                                         <div className='container-cep-calculo'>
                                             <div style={{ marginTop: 40, marginBottom: 4, fontSize: 14 }}>Calcular frete e prazo </div>
                                             <div className='container-cep-botao'>
-                                                <input type="number" placeholder='digite seu CEP' />
+                                                <input type="number" placeholder='CEP' />
                                                 <button>Ok</button>
                                             </div>
                                         </div>

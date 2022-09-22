@@ -1,5 +1,5 @@
 .main-container-detalhar {
-    width: 93.5%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     background-color: #f2f2f2f2;
@@ -48,6 +48,8 @@
                 .descricao-produto-detalhar {
                     font-size: 0.9rem;
                     width: 90%;
+                    height: 140px;
+                    overflow: hidden;
                     color: rgba(0, 0, 0, 0.747);
                 }
             }
@@ -125,6 +127,77 @@
                     }
                 }
             }
+
+        }
+    }
+}
+
+@media screen and (max-width: 1107px) {
+    .container-produto-pagamento {
+        padding: 10px !important;
+    }
+}
+
+@media screen and (max-width:789px) {
+    .main-container-detalhar {
+        .container-nome-preco-imagem {
+            width: 100%;
+            flex-direction: column;
+
+            .conteiner-produto-detalhar {
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+
+                .conteiner-imagem {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0;
+
+                    img {
+                        width: 200px;
+                    }
+                }
+
+                .container-descricao {
+                    width: 100%;
+                    align-items: center;
+                    position: relative;
+
+                    .container-estrelas {
+                        justify-content: center;
+                        position: absolute;
+                        bottom: 0;
+
+                        .stars-icon {
+                            font-size: 1rem !important;
+                        }
+                    }
+
+                    .nome-produto-detalhar {
+                        width: 100%;
+                        font-size: 1rem;
+                    }
+
+                    .descricao-produto-detalhar {
+                        display: none;
+                    }
+                }
+            }
+
+            .container-produto-pagamento {
+                padding: 30px !important;
+                width: 100%;
+                .container-cep-calculo{
+                    .container-cep-botao{
+                        input{
+                            max-width: 200px;
+                        }
+                    }
+                }
+            }
+
 
         }
     }

@@ -1,5 +1,5 @@
 .main-container-listagem {
-    width: 93.5%;
+    width: 100%;
     display: flex;
     margin: 0 auto;
     flex-wrap: wrap;
@@ -19,8 +19,8 @@
         background-color: #ffff;
         margin: 40px 25px 10px 0px;
         transition: .5s ease-in-out;
-        justify-content: space-between;
         border: solid 1px #00000018;
+        justify-content: space-between;
         box-shadow: #00000021 2px 1px 6px;
 
         img {
@@ -51,5 +51,24 @@
             font-size: 0.8rem;
             color: rgb(52, 53, 54);
         }
+    }
+}
+
+@media screen and (max-width: 549px) {
+    .main-container-listagem {
+        .conteiner-card {
+            align-items: center;
+            width: 100vw;
+            margin: 10px 0px 10px 0px;
+            height: 350px;
+            div{
+                width: 100%;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
     }
 }

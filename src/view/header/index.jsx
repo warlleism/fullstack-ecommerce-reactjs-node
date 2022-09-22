@@ -18,7 +18,7 @@ const Header = () => {
     const [dataCarrinho, setDataCarrinho] = useState([])
     const { setId } = useContext(Context);
     const { setDados } = useContext(Context);
-    const { mobileBar,setMobileBar } = useContext(Context);
+    const { mobileBar, setMobileBar } = useContext(Context);
 
     useEffect(() => {
         fetch("http://localhost:3001/tipos")
@@ -119,6 +119,7 @@ const Header = () => {
                             )
                         })
                     }
+
                 </div>
             </div>
             <div>
@@ -126,6 +127,9 @@ const Header = () => {
                     (
                         <div className='container-lista-links-mobile'>
                             <div className='container-lista-mobile'>
+                                <Link to="/carrinho" style={{fontWeight: 500, fontSize: "0.9rem", marginTop: 20, marginBottom: -50 }} onClick={() => showMobileBar()}>
+                                    CARRINHO 
+                                </Link>
                                 {
                                     data[0]?.map(dados => {
                                         return (
@@ -135,6 +139,7 @@ const Header = () => {
                                         )
                                     })
                                 }
+
                             </div>
                         </div>
                     )

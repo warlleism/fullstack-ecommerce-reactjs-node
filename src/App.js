@@ -6,7 +6,7 @@ import './index.css'
 function App() {
   
   return (
-    <div style={{ backgroundColor: "#180b41" }}>
+    <div>
       <Provider>
         <Rotas />
       </Provider>
