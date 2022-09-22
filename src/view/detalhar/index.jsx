@@ -27,7 +27,6 @@ const Detalhar = () => {
         }
     }
 
-
     const setDados = async (id, nome, preco, quantidade) => {
         var nomedado = nome;
         var nomeReplaceSimples = nomedado.replace(/'/g, '');
@@ -94,7 +93,6 @@ const Detalhar = () => {
                                             <div className='descricao-produto-detalhar'>{localStorage.getItem("descricao") ? localStorage.getItem("descricao") : dados?.descricao}</div>
                                         </div>
                                     </div>
-
                                     <div className='container-produto-pagamento'>
                                         <div className='preco-produto-detalhar'>{localStorage.getItem("preco") ? localStorage.getItem("preco") : dados?.preco}</div>
                                         <div className='container-cep-calculo'>

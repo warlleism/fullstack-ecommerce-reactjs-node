@@ -71,8 +71,8 @@
                 .preco-produto {
                     color: #3423A6;
                     font-weight: 900;
-                    font-size: 1.7rem;
                     margin-top: 1rem;
+                    font-size: 1.7rem;
                     margin-bottom: 0.25rem;
                 }
 
@@ -103,16 +103,16 @@
 }
 
 .container-mobile-carroussel {
-    display: none;
     width: 100%;
+    display: none;
 
     .container-carroussel-cards-mobile {
         display: flex;
-        flex-direction: row;
         width: 7925px;
         height: 300px;
-        transition: .2s ease-in-out;
+        flex-direction: row;
         scroll-behavior: smooth;
+        transition: .2s ease-in-out;
 
         .cards-mobile {
             width: 100vw;
@@ -127,17 +127,15 @@
             }
 
             .nome-produto {
-                text-align: center;
                 width: 200px;
-                font-size: 0.9rem;
-                color: rgba(0, 0, 0, 0.535);
                 margin-top: 20px;
+                font-size: 0.9rem;
+                text-align: center;
+                color: rgba(0, 0, 0, 0.535);
             }
         }
     }
-
 }
-
 
 
 @media screen and (max-width: 1615px) {
@@ -145,7 +143,6 @@
         flex-wrap: wrap;
 
         img {
-            // z-index: 999999999999;
             width: 70%;
             height: 200px !important;
         }
@@ -228,7 +225,6 @@
 
     .container-imagems-promocao {
         img {
-
             width: 70%;
             height: 100px !important;
         }

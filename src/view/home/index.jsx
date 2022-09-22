@@ -28,7 +28,6 @@ const Home = () => {
     const { mobileBar } = useContext(Context);
     const { setDados } = useContext(Context);
 
-
     const Left = () => {
         posicao == 1.2 ? setPosicao(-24) : setPosicao(parseInt(posicao + 13))
     }
@@ -77,7 +76,6 @@ const Home = () => {
                         (
                             <div className='main-conteiner-cards'>
                                 <div className='play-content'><div>{BuscarMes(mes)} TECH</div></div>
-
                                 <div className='conteiner-carrousel'>
                                     <div className='conteiner-arrow-left' style={{ zIndex: 9999, backgroundColor: "#f2f2f2", width: 52, left: 0, height: "100%" }}>
                                         <FontAwesomeIcon className='arrowLeft' style={{ fontSize: "2rem", cursor: "pointer", marginLeft: "10px", color: "#9d9d9dcf", borderRadius: 30, boxSizing: "border-box", padding: 7, backgroundColor: "#ffff" }} icon={faArrowLeft} onClick={() => Left()} />
@@ -100,13 +98,10 @@ const Home = () => {
                                             })}
                                         </div>
                                     </div>
-
                                     <div className='conteiner-arrow-right' style={{ zIndex: 9999, backgroundColor: "#f2f2f2", width: 50, right: 0, height: "100%" }}>
                                         <FontAwesomeIcon className='arrowRigth' style={{ fontSize: "2rem", cursor: "pointer", marginRight: "10px", color: "#9d9d9dcf", borderRadius: 30, boxSizing: "border-box", padding: 7, backgroundColor: "#ffff" }} icon={faArrowRight} onClick={() => Rigth()} />
                                     </div>
-
                                 </div>
-
                                 <div className="container-mobile-carroussel">
                                     <div className='conteiner-arrow-right' style={{ display: 'flex', alignItems: 'center', position: 'absolute', left: 0, zIndex: 9999, backgroundColor: "#f2f2f2", width: 50, right: 0, height: "44%" }}>
                                         <FontAwesomeIcon className='arrowLeft' style={{ fontSize: "2rem", cursor: "pointer", marginLeft: 8, color: "#9d9d9dcf", borderRadius: 30, boxSizing: "border-box", padding: 7, backgroundColor: "#ffff" }} icon={faArrowLeft} onClick={() => LeftMobile()} />
@@ -125,7 +120,6 @@ const Home = () => {
                                         <FontAwesomeIcon className='arrowRigth' style={{ fontSize: "2rem", cursor: "pointer", color: "#9d9d9dcf", marginLeft: 10, borderRadius: 30, boxSizing: "border-box", padding: 7, backgroundColor: "#ffff" }} icon={faArrowRight} onClick={() => RigthMobile()} />
                                     </div>
                                 </div>
-
                                 <div className="container-imagems-promocao">
                                     <img src={require('../../img/promocao1.png')} alt="" />
                                     <img src={require('../../img/promocao2.png')} alt="" />

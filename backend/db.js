@@ -36,6 +36,12 @@ const listarProdutoCarrinho = async () => {
     const conn = await connect();
     return await conn.query(`select i.id, i.imagem, c.nome, c.preco, c.quantidade from itens as i inner join carrinho as c on c.id = i.id`);
 }
+
+const deletarProdutoCarrinho = async (id) => {
+    const conn = await connect();
+    return await conn.query(`delete from carrinho where id = ${id}`);
+}
+
 const aumentarProdutoCarrinho = async (quantidade, id) => {
     const conn = await connect();
     return await conn.query(`update carrinho set quantidade = ${quantidade} where id = ${id}`);
@@ -49,4 +55,4 @@ const listarProdutoId = async (valor) => {
 
 connect();
 
-module.exports = { listarProduto, listarTipos, listarProdutoId, listarDestaques, addCarrinho, listarProdutoCarrinho, aumentarProdutoCarrinho }
+module.exports = { listarProduto, listarTipos, listarProdutoId, listarDestaques, addCarrinho, listarProdutoCarrinho, aumentarProdutoCarrinho, deletarProdutoCarrinho }

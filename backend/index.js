@@ -59,6 +59,12 @@
         res.send(clientes)
     })
 
+    //Rota para deletar produto do carrinho
+    app.delete('/carrinho/deletar/:id', async (req, res) => {
+        const clientes = await db.deletarProdutoCarrinho(req?.params?.id)
+        res.send(clientes)
+    })
+
 
 })();
 

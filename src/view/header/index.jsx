@@ -15,10 +15,9 @@ const Header = () => {
     const [handler, setHandler] = useState([])
     const [searchFilter, setSearchFilter] = useState()
     const [inputTexto, setInputTexto] = useState('')
-
+    const [dataCarrinho, setDataCarrinho] = useState([])
     const { setId } = useContext(Context);
     const { setDados } = useContext(Context);
-    const { carrinho } = useContext(Context);
     const { mobileBar,setMobileBar } = useContext(Context);
 
     useEffect(() => {
@@ -26,6 +25,14 @@ const Header = () => {
             .then((res) => res.json())
             .then((data) => {
                 setData(data)
+            })
+    }, [])
+
+    useEffect(() => {
+        fetch("http://localhost:3001/carrinho/listar")
+            .then((res) => res.json())
+            .then((data) => {
+                setDataCarrinho(data)
             })
     }, [])
 
@@ -59,7 +66,7 @@ const Header = () => {
         localStorage.setItem("estrelas", value.estrelas)
     }
 
-    const linkFunc = (dado) => {
+    const showMobileBar = (dado) => {
         setId(dado)
         setMobileBar(false)
     }
@@ -95,13 +102,12 @@ const Header = () => {
                     <FontAwesomeIcon icon={faCircleUser} className="icon user" />
                     <Link className='carrinho' to="/carrinho"  >
                         <FontAwesomeIcon icon={faCartShopping} className="icon cart" />
-                        <div>{carrinho == 0 ? 0 : carrinho}</div>
+                        <div>{dataCarrinho?.[0]?.length}</div>
                     </Link>
                     <FontAwesomeIcon icon={faHeadset} className="icon headset" />
                     <FontAwesomeIcon icon={faBars} className="icon bars" id='togler-close-padrao' style={{ outline: "none" }} onClick={() => setMobileBar(!mobileBar)} />
                 </div>
             </div>
-
             <div className='container-lista-links'>
                 <div className='container-lista'>
                     {
@@ -123,7 +129,7 @@ const Header = () => {
                                 {
                                     data[0]?.map(dados => {
                                         return (
-                                            <Link to="/listagem" key={dados.id} onClick={() => linkFunc(dados?.id)} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                            <Link to="/listagem" key={dados.id} onClick={() => showMobileBar(dados?.id)} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                                 {dados?.nome}
                                             </Link>
                                         )
@@ -134,8 +140,6 @@ const Header = () => {
                     )
                 }
             </div>
-
-
             <div className='imagem-oferta' >
                 <img src={require("../../img/oferta.png")} />
             </div>

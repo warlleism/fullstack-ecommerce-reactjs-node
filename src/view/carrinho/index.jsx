@@ -3,15 +3,14 @@ import { ColorRing } from 'react-loader-spinner';
 import { Context } from "../../context/provider";
 import { useEffect } from 'react';
 import Header from '../header';
+import axios from 'axios';
 
 import './style.scss'
-import axios from 'axios';
 
 const Carrinho = () => {
 
     const [data, setData] = useState([]);
     const [valor, setValor] = useState()
-    const { setCarrinho } = useContext(Context);
     const { mobileBar } = useContext(Context);
 
     const [acumulador, setAcumulador] = useState(0)
@@ -28,19 +27,22 @@ const Carrinho = () => {
         if (quantidade < 1) {
             return
         }
-        setAcumulador(acumulador + 1)
         const res = await axios.post(`http://localhost:3001/carrinho/${quantidade}/${id}`)
+        setAcumulador(acumulador + 1)
+    }
+
+    const deletarProduto = async (id) => {
+        const res = await axios.delete(`http://localhost:3001/carrinho/deletar/${id}`)
+        setAcumulador(acumulador + 1)
     }
 
     useEffect(() => {
-        setCarrinho(data[0]?.length)
         const reduceSalarios = data[0]?.reduce((valor, valorAtual) => valor + parseInt(valorAtual?.preco?.replace(/\D+/g, '')) * valorAtual?.quantidade, 0)
         let price = reduceSalarios?.toString()
         price = price?.replace(/(\d{1})/, '$1,')
         price = price?.replace(/(\d{3}(?!$))/g, '$1.')
         setValor(price)
     }, [data])
-
 
     return (
         <>
@@ -73,11 +75,15 @@ const Carrinho = () => {
                                                     <div className='container-descricao'>
                                                         <div className='nome-produto-carrinho'>{dados?.nome}</div>
                                                     </div>
-                                                    <div className='quantidade'>
-                                                        <div className='operadores' onClick={() => setarQuantidade(dados?.quantidade - 1, dados?.id)}>-</div>
-                                                        <div>{dados?.quantidade}</div>
-                                                        <div className='operadores' onClick={() => setarQuantidade(dados?.quantidade + 1, dados?.id)}>+</div>
+                                                    <div className='container-quantidade'>
+                                                        <div className='quantidade'>
+                                                            <div className='operadores' onClick={() => setarQuantidade(dados?.quantidade - 1, dados?.id)}>-</div>
+                                                            <div>{dados?.quantidade}</div>
+                                                            <div className='operadores' onClick={() => setarQuantidade(dados?.quantidade + 1, dados?.id)}>+</div>
+                                                        </div>
+                                                        <div onClick={() => deletarProduto(dados?.id)}>remover</div>
                                                     </div>
+
                                                 </div>
                                             )
                                         })
