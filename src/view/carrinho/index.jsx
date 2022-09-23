@@ -39,7 +39,11 @@ const Carrinho = () => {
     useEffect(() => {
         const reduceSalarios = data[0]?.reduce((valor, valorAtual) => valor + parseInt(valorAtual?.preco?.replace(/\D+/g, '')) * valorAtual?.quantidade, 0)
         let price = reduceSalarios?.toString()
-
+        
+        if (price?.length == 7) {
+            price = price?.replace(/(\d{2})/, '$1,')
+            price = price?.replace(/(\d{3}(?!$))/g, '$1.')
+        }
         if (price?.length == 6) {
             price = price?.replace(/(\d{1})/, '$1,')
             price = price?.replace(/(\d{3}(?!$))/g, '$1.')
