@@ -9,11 +9,10 @@ import './style.scss'
 
 const Carrinho = () => {
 
-    const [data, setData] = useState([]);
     const [valor, setValor] = useState()
-    const { mobileBar } = useContext(Context);
-
+    const [data, setData] = useState([]);
     const [acumulador, setAcumulador] = useState(0)
+    const { mobileBar } = useContext(Context);
 
     useEffect(() => {
         fetch("http://localhost:3001/carrinho/listar")
@@ -33,7 +32,7 @@ const Carrinho = () => {
 
     const deletarProduto = async (id) => {
         const res = await axios.delete(`http://localhost:3001/carrinho/deletar/${id}`)
-        setAcumulador(acumulador + 1)
+        setAcumulador(acumulador - 1)
     }
 
     useEffect(() => {
@@ -46,7 +45,7 @@ const Carrinho = () => {
 
     return (
         <>
-            <Header />
+            <Header acumulador={acumulador} />
             {data?.length == 0 ?
                 <div style={{ height: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <ColorRing
@@ -93,12 +92,12 @@ const Carrinho = () => {
                                         <div className='titulo-resumo'>Resumo do pedido</div>
                                         <div className='quantidade-produtos'>
                                             <div>{data[0]?.length} produtos</div>
-                                            <div>{valor}</div>
+                                            <div>{valor == "0," ? 0 : valor}</div>
                                         </div>
                                     </div>
                                     <div className='resumo-valor-total'>
                                         <div>Total</div>
-                                        <div>{valor}</div>
+                                        <div>{valor == "0," ? 0 : valor}</div>
                                     </div>
                                     <div className='botao-continuar'>
                                         continuar

@@ -9,7 +9,7 @@ import { Context } from "../../context/provider";
 
 import './style.scss'
 
-const Header = () => {
+const Header = (props) => {
 
     const [data, setData] = useState([])
     const [handler, setHandler] = useState([])
@@ -34,7 +34,7 @@ const Header = () => {
             .then((data) => {
                 setDataCarrinho(data)
             })
-    }, [])
+    }, [props.acumulador])
 
 
     useEffect(() => {
@@ -127,8 +127,8 @@ const Header = () => {
                     (
                         <div className='container-lista-links-mobile'>
                             <div className='container-lista-mobile'>
-                                <Link to="/carrinho" style={{fontWeight: 500, fontSize: "0.9rem", marginTop: 20, marginBottom: -50 }} onClick={() => showMobileBar()}>
-                                    CARRINHO 
+                                <Link to="/carrinho" style={{ fontWeight: 500, fontSize: "0.9rem", marginTop: 20, marginBottom: -50 }} onClick={() => showMobileBar()}>
+                                    CARRINHO
                                 </Link>
                                 {
                                     data[0]?.map(dados => {
