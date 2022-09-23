@@ -39,6 +39,15 @@ const Carrinho = () => {
     useEffect(() => {
         const reduceSalarios = data[0]?.reduce((valor, valorAtual) => valor + parseInt(valorAtual?.preco?.replace(/\D+/g, '')) * valorAtual?.quantidade, 0)
         let price = reduceSalarios?.toString()
+
+        if (price?.length == 6) {
+            price = price?.replace(/(\d{1})/, '$1,')
+            price = price?.replace(/(\d{3}(?!$))/g, '$1.')
+        }
+        if (price?.length == 5) {
+            price = price?.replace(/(\d{3})/, '$1,')
+        }
+
         setValor(price)
         localStorage.setItem("valorTotal", price)
     }, [data])
@@ -97,11 +106,11 @@ const Carrinho = () => {
                                     </div>
                                     <div className='resumo-valor-total'>
                                         <div>Total</div>
-                                        <div>R$ {valor == "0," ? 0 : valor}</div>
+                                        <div>R$ {valor}</div>
                                     </div>
                                     <div className='botao-continuar'>
                                         {
-                                            valor == '0,' ? <Link to="/carrinho" style={{ textDecoration: "none", color: "#ffff" }}>continuar</Link> : <Link to="/comprar" style={{ textDecoration: "none", color: "#ffff" }}>continuar</Link>
+                                            valor == 0 ? <Link to="/carrinho" style={{ textDecoration: "none", color: "#ffff" }}>continuar</Link> : <Link to="/comprar" style={{ textDecoration: "none", color: "#ffff" }}>continuar</Link>
                                         }
 
                                     </div>

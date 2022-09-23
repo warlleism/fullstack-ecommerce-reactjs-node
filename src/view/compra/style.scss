@@ -64,6 +64,7 @@
 
     .container-fechar-pedido {
         width: 100%;
+        margin-bottom: 30px;
 
         .container-total {
             display: flex;
@@ -154,14 +155,22 @@
             .container-info-icons {
                 margin-left: 20px;
 
-                .icon-pagamento {
-                    width: 30px;
-                    padding: 10px;
-                    color: #ffff;
-                    font-size: 2rem;
-                    margin-right: 10px;
-                    border-radius: 100%;
-                    background-color: rgba(43, 43, 43, 0.768);
+                .container-info {
+                    display: flex;
+                    align-items: center;
+                    flex-direction: row;
+                    width: 100%;
+
+                    .icon-pagamento {
+                        width: 20px;
+                        padding: 10px;
+                        color: #ffff;
+                        font-size: 1.6rem;
+                        margin-right: 10px;
+                        margin-bottom: 10px;
+                        border-radius: 100%;
+                        background-color: #77b6a8;
+                    }
                 }
             }
         }

@@ -1,14 +1,17 @@
-import React, { useContext, useState } from 'react';
+import Header from '../header';
+import { useEffect } from 'react';
 import { ColorRing } from 'react-loader-spinner';
 import { Context } from "../../context/provider";
-import { useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCreditCard } from "@fortawesome/free-solid-svg-icons"
-import { faBarcode } from "@fortawesome/free-solid-svg-icons"
+import React, { useContext, useState } from 'react';
 import { faPrint } from "@fortawesome/free-solid-svg-icons"
+import { faBarcode } from "@fortawesome/free-solid-svg-icons"
+import { faMobile } from "@fortawesome/free-solid-svg-icons"
 import { faComputer } from "@fortawesome/free-solid-svg-icons"
+import { faQrcode } from "@fortawesome/free-solid-svg-icons"
+import { faCheck } from "@fortawesome/free-solid-svg-icons"
 import { faCalendar } from "@fortawesome/free-solid-svg-icons"
-import Header from '../header';
+import { faCreditCard } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './style.scss'
 
@@ -141,16 +144,16 @@ const Comprar = () => {
                                                 <div className='qrcode-info' >
                                                     <img src={require("../../img/qrcode.png")} />
                                                     <div className='container-info-icons'>
-                                                        <div className='imprimir container-info' style={{ display: 'flex', flexDirection: "row", width: "100%" }}>
-                                                            <FontAwesomeIcon className="icon-pagamento" icon={faPrint} />
+                                                        <div className='imprimir container-info'>
+                                                            <FontAwesomeIcon className="icon-pagamento" icon={faMobile} />
                                                             <label>Imprima o boleto e pague no banco</label>
                                                         </div>
-                                                        <div className='internet container-info' style={{ display: 'flex', flexDirection: "row", width: "100%" }}>
-                                                            <FontAwesomeIcon className="icon-pagamento" icon={faComputer} />
+                                                        <div className='internet container-info'>
+                                                            <FontAwesomeIcon className="icon-pagamento" icon={faQrcode} />
                                                             <label>ou pague pela internet utilizando o código de barras do boleto</label>
                                                         </div>
-                                                        <div className='calendario container-info' style={{ display: 'flex', flexDirection: "row", width: "100%" }}>
-                                                            <FontAwesomeIcon className="icon-pagamento" icon={faCalendar} />
+                                                        <div className='calendario container-info'>
+                                                            <FontAwesomeIcon className="icon-pagamento" icon={faCheck} />
                                                             <label>o prazo de validade do boleto é de 1 dia util</label>
                                                         </div>
                                                     </div>

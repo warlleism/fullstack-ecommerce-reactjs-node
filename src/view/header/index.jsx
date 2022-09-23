@@ -100,7 +100,7 @@ const Header = (props) => {
                 </div>
                 <div className='content-conteiner'>
                     <FontAwesomeIcon icon={faCircleUser} className="icon user" />
-                    <Link className='carrinho' to="/carrinho"  >
+                    <Link className='carrinho' to="/carrinho" onClick={() => showMobileBar()} >
                         <FontAwesomeIcon icon={faCartShopping} className="icon cart" />
                         <div>{dataCarrinho?.[0]?.length}</div>
                     </Link>

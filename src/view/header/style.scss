@@ -148,7 +148,7 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        
+
         a {
             font-weight: 500;
             font-size: 0.9rem;
@@ -178,7 +178,6 @@
 @media screen and (max-width: 1000px) {
 
     .main-header {
-        overflow: hidden;
         background-image: none;
         background-color: #180b41 !important;
 
@@ -191,11 +190,13 @@
             width: 80% !important;
 
             .container-pesquisa {
-                width: 104%;
+                width: 102%;
                 font-size: 0.9rem;
-                text-align: center;
 
                 .resultado-pesquisa {
+                    width: 100%;
+                    align-items: flex-start;
+                    text-align: start;
                     flex-direction: column;
 
                     img {
