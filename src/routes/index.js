@@ -4,6 +4,7 @@ const Listagem = React.lazy(() => import('../view/listagem'))
 const Detalhar = React.lazy(() => import('../view/detalhar'))
 const Carrinho = React.lazy(() => import('../view/carrinho'))
 const Home = React.lazy(() => import('../view/home'))
+const Comprar = React.lazy(() => import('../view/compra'))
 
 
 export default function Rotas() {
@@ -37,6 +38,13 @@ export default function Rotas() {
                     element={
                         <React.Suspense fallback='Carregando...'>
                             <Carrinho />
+                        </React.Suspense>
+                    } />
+
+                <Route path="/comprar"
+                    element={
+                        <React.Suspense fallback='Carregando...'>
+                            <Comprar />
                         </React.Suspense>
                     } />
 

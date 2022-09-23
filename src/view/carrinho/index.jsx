@@ -6,6 +6,7 @@ import Header from '../header';
 import axios from 'axios';
 
 import './style.scss'
+import { Link } from 'react-router-dom';
 
 const Carrinho = () => {
 
@@ -38,9 +39,8 @@ const Carrinho = () => {
     useEffect(() => {
         const reduceSalarios = data[0]?.reduce((valor, valorAtual) => valor + parseInt(valorAtual?.preco?.replace(/\D+/g, '')) * valorAtual?.quantidade, 0)
         let price = reduceSalarios?.toString()
-        price = price?.replace(/(\d{1})/, '$1,')
-        price = price?.replace(/(\d{3}(?!$))/g, '$1.')
         setValor(price)
+        localStorage.setItem("valorTotal", price)
     }, [data])
 
     return (
@@ -92,15 +92,18 @@ const Carrinho = () => {
                                         <div className='titulo-resumo'>Resumo do pedido</div>
                                         <div className='quantidade-produtos'>
                                             <div>{data[0]?.length} produtos</div>
-                                            <div>{valor == "0," ? 0 : valor}</div>
+                                            <div>R$ {valor == "0," ? 0 : valor}</div>
                                         </div>
                                     </div>
                                     <div className='resumo-valor-total'>
                                         <div>Total</div>
-                                        <div>{valor == "0," ? 0 : valor}</div>
+                                        <div>R$ {valor == "0," ? 0 : valor}</div>
                                     </div>
                                     <div className='botao-continuar'>
-                                        continuar
+                                        {
+                                            valor == '0,' ? <Link to="/carrinho" style={{ textDecoration: "none", color: "#ffff" }}>continuar</Link> : <Link to="/comprar" style={{ textDecoration: "none", color: "#ffff" }}>continuar</Link>
+                                        }
+
                                     </div>
                                 </div>
                             </div>
