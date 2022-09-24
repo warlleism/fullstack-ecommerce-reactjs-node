@@ -56,7 +56,7 @@ const Header = (props) => {
     }
 
     const localItens = (value) => {
-        setInputTexto("")
+        // setInputTexto("")
         setDados(value)
         localStorage.setItem("imagem", value.imagem)
         localStorage.setItem("id", value.id)
@@ -71,6 +71,50 @@ const Header = (props) => {
         setMobileBar(false)
     }
 
+    const localItensInput = (value) => {
+        setId(value)
+        localStorage.setItem("id", value)
+    }
+
+    const searchInpitEnter = () => {
+        if (inputTexto != 0 && inputTexto.includes('pc gamer')) {
+            localStorage.setItem("id", 1)
+            setId(1)
+        }
+        else if (inputTexto != 0 && inputTexto.includes('notebook')) {
+            localStorage.setItem("id", 2)
+            setId(2)
+        }
+        else if (inputTexto != 0 && inputTexto.includes("smartphone" || "samsung" || "iphone")) {
+            localStorage.setItem("id", 3)
+            setId(3)
+        }
+        else if (inputTexto != 0 && inputTexto.includes("console" || "xbox")) {
+            localStorage.setItem("id", 4)
+            setId(4)
+        }
+        else if (inputTexto != 0 && inputTexto.includes('cadeira')) {
+            localStorage.setItem("id", 5)
+            setId(5)
+        }
+        else if (inputTexto != 0 && inputTexto.includes('processador')) {
+            localStorage.setItem("id", 6)
+            setId(6)
+        }
+        else if (inputTexto != 0 && inputTexto.includes('headset')) {
+            localStorage.setItem("id", 7)
+            setId(7)
+        }
+    }
+
+    document.addEventListener("keypress", (e) => {
+
+        if (e.key === "Enter") {
+            searchInpitEnter()
+            document.getElementById("btn").click()
+        }
+    })
+
     return (
         <>
             <div className='main-header'>
@@ -79,6 +123,7 @@ const Header = (props) => {
                 </Link>
                 <div className='container-input'>
                     <input type="text" value={inputTexto} onChange={e => setInputTexto(e.target.value)} />
+                    <Link to="/listagem" id="btn">link</Link>
                     {inputTexto != '' ? false : <div className='texto-busque-aqui'>Busque aqui</div>}
                     {
                         inputTexto != '' ?
@@ -113,7 +158,7 @@ const Header = (props) => {
                     {
                         data[0]?.map(dados => {
                             return (
-                                <Link to="/listagem" key={dados.id} onClick={() => setId(dados?.id)} style={dados?.id == 1 ? { borderLeft: "solid 1px #ffffff29", borderRight: "solid 1px #ffffff29" } : { borderRight: "solid 1px #ffffff29" }}>
+                                <Link to="/listagem" key={dados.id} onClick={() => localItensInput(dados?.id)} style={dados?.id == 1 ? { borderLeft: "solid 1px #ffffff29", borderRight: "solid 1px #ffffff29" } : { borderRight: "solid 1px #ffffff29" }}>
                                     {dados?.nome}
                                 </Link>
                             )

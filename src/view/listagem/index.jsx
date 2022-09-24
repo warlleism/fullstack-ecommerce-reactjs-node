@@ -13,7 +13,7 @@ const Listagem = () => {
     const { mobileBar } = useContext(Context);
 
     useEffect(() => {
-        fetch(`http://localhost:3001/listar/${id ? id : 1}`)
+        fetch(`http://localhost:3001/listar/${id ? id : localStorage.getItem("id")}`)
             .then((res) => res.json())
             .then((data) => {
                 setData(data)
