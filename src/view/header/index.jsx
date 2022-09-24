@@ -44,7 +44,7 @@ const Header = (props) => {
                 setHandler(data[0])
             })
         handlesFilter()
-        document.addEventListener("click", () => setInputTexto(""))
+
     }, [inputTexto])
 
     const handlesFilter = () => {
@@ -56,7 +56,6 @@ const Header = (props) => {
     }
 
     const localItens = (value) => {
-        // setInputTexto("")
         setDados(value)
         localStorage.setItem("imagem", value.imagem)
         localStorage.setItem("id", value.id)
@@ -78,44 +77,34 @@ const Header = (props) => {
 
     const categorias = [
         {
-            nome: "pc gamer",
-            nome: "pc",
-            nome: "computador",
+            nome: `pc gamer`,
             id: 1
         },
         {
-            nome: "notebook",
+            nome: `notebook`,
             id: 2
         },
         {
-            nome: "smartphone",
-            nome: "celular",
-            nome: "samsung",
-            nome: "iphone",
+            nome: `smartphone`,
+            nome: `celular`,
             id: 3
         },
         {
-            nome: "video game",
-            nome: "xbox",
-            nome: "playstation",
-            nome: "nitendo",
-            nome: "switch",
+            nome: `video game`,
+            nome2: `xbox`,
+            nome: `playstation`,
             id: 4
         },
         {
-            nome: "cadeira gamer",
-            nome: "cadeira",
+            nome: `cadeira gamer`,
             id: 5
         },
         {
-            nome: "processador",
-            nome: "Ryzen",
-            nome: "intel",
+            nome: `processador`,
             id: 6
         },
         {
-            nome: "headset",
-            nome: "headphone",
+            nome: `headset`,
             id: 7
         },
     ]
@@ -128,15 +117,11 @@ const Header = (props) => {
     const searchInputEnter = () => {
 
         const dados = categorias.map((e) => e)
-
+        document.addEventListener("click", () => setInputTexto(""))
         for (let i = 0; i < 7; i++) {
-            const data = inputTexto.includes(dados[i].nome) ? setarDados(dados[i].id) : false
+            const data = inputTexto.includes(dados[i].nome || dados[i].nome2) ? setarDados(dados[i].id) : false
         }
     }
-
-
-
-
 
     return (
         <>
@@ -146,24 +131,23 @@ const Header = (props) => {
                 </Link>
                 <div className='container-input'>
                     <input type="text" value={inputTexto} onChange={e => setInputTexto(e.target.value)} />
-                    <Link to="/listagem" id="btn" onClick={() => searchInputEnter()}>link</Link>
+                    <Link to="/listagem" id="btn" onClick={() => searchInputEnter()}><img src={require("../../img/botaoSearch.png")} style={{ maxWidth: 70, position: 'absolute', right: -70, top: -15 }} /> </Link>
                     {inputTexto != '' ? false : <div className='texto-busque-aqui'>Busque aqui</div>}
                     {
-                        inputTexto != '' ?
-                            <div className='container-pesquisa' id='pesquisa'>
-                                {
-                                    searchFilter?.map((data) => {
-                                        return (
-                                            <Link to="/detalhar" className='resultado-pesquisa' style={{ textDecoration: "none" }} onClick={() => localItens(data)}>
-                                                <img src={`data:image/png;base64,${data?.imagem}`} alt="" />
-                                                {data?.nome}
-                                            </Link>
-                                        )
-                                    })
-                                }
-                            </div>
-                            :
-                            false
+                        inputTexto &&
+                        <div className='container-pesquisa' id='pesquisa'>
+                            {
+                                searchFilter?.map((data) => {
+                                    return (
+                                        <Link to="/detalhar" className='resultado-pesquisa' style={{ textDecoration: "none" }} onClick={() => localItens(data)}>
+                                            <img src={`data:image/png;base64,${data?.imagem}`} alt="" />
+                                            {data?.nome}
+                                        </Link>
+                                    )
+                                })
+                            }
+                        </div>
+
                     }
                 </div>
                 <div className='content-conteiner'>
