@@ -76,44 +76,67 @@ const Header = (props) => {
         localStorage.setItem("id", value)
     }
 
-    const searchInpitEnter = () => {
-        if (inputTexto != 0 && inputTexto.includes('pc gamer')) {
-            localStorage.setItem("id", 1)
-            setId(1)
-        }
-        else if (inputTexto != 0 && inputTexto.includes('notebook')) {
-            localStorage.setItem("id", 2)
-            setId(2)
-        }
-        else if (inputTexto != 0 && inputTexto.includes("smartphone" || "samsung" || "iphone")) {
-            localStorage.setItem("id", 3)
-            setId(3)
-        }
-        else if (inputTexto != 0 && inputTexto.includes("console" || "xbox")) {
-            localStorage.setItem("id", 4)
-            setId(4)
-        }
-        else if (inputTexto != 0 && inputTexto.includes('cadeira')) {
-            localStorage.setItem("id", 5)
-            setId(5)
-        }
-        else if (inputTexto != 0 && inputTexto.includes('processador')) {
-            localStorage.setItem("id", 6)
-            setId(6)
-        }
-        else if (inputTexto != 0 && inputTexto.includes('headset')) {
-            localStorage.setItem("id", 7)
-            setId(7)
+    const categorias = [
+        {
+            nome: "pc gamer",
+            nome: "pc",
+            nome: "computador",
+            id: 1
+        },
+        {
+            nome: "notebook",
+            id: 2
+        },
+        {
+            nome: "smartphone",
+            nome: "celular",
+            nome: "samsung",
+            nome: "iphone",
+            id: 3
+        },
+        {
+            nome: "video game",
+            nome: "xbox",
+            nome: "playstation",
+            nome: "nitendo",
+            nome: "switch",
+            id: 4
+        },
+        {
+            nome: "cadeira gamer",
+            nome: "cadeira",
+            id: 5
+        },
+        {
+            nome: "processador",
+            nome: "Ryzen",
+            nome: "intel",
+            id: 6
+        },
+        {
+            nome: "headset",
+            nome: "headphone",
+            id: 7
+        },
+    ]
+
+    const setarDados = (id) => {
+        localStorage.setItem("id", id)
+        setId(id)
+    }
+
+    const searchInputEnter = () => {
+
+        const dados = categorias.map((e) => e)
+
+        for (let i = 0; i < 7; i++) {
+            const data = inputTexto.includes(dados[i].nome) ? setarDados(dados[i].id) : false
         }
     }
 
-    document.addEventListener("keypress", (e) => {
 
-        if (e.key === "Enter") {
-            searchInpitEnter()
-            document.getElementById("btn").click()
-        }
-    })
+
+
 
     return (
         <>
@@ -123,7 +146,7 @@ const Header = (props) => {
                 </Link>
                 <div className='container-input'>
                     <input type="text" value={inputTexto} onChange={e => setInputTexto(e.target.value)} />
-                    <Link to="/listagem" id="btn">link</Link>
+                    <Link to="/listagem" id="btn" onClick={() => searchInputEnter()}>link</Link>
                     {inputTexto != '' ? false : <div className='texto-busque-aqui'>Busque aqui</div>}
                     {
                         inputTexto != '' ?
