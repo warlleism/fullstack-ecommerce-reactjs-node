@@ -58,6 +58,12 @@ const Header = (props) => {
 
     const localItens = (value) => {
         setDados(value)
+        localStorage.setItem("imagem", value.imagem)
+        localStorage.setItem("id", value.id)
+        localStorage.setItem("nome", value.nome)
+        localStorage.setItem("descricao", value.descricao)
+        localStorage.setItem("preco", value.preco)
+        localStorage.setItem("estrelas", value.estrelas)
     }
 
     const showMobileBar = (dado) => {
@@ -75,7 +81,7 @@ const Header = (props) => {
         { nome: `notebook`, id: 2 },
         { nome: `smartphone`, nome: `celular`, id: 3 },
         { nome: `video game`, id: 4 },
-        { nome: `cadeira gamer`, nome: `cadeira`, id: 5 },
+        { nome: `cadeira gamer`, id: 5 },
         { nome: `processador`, id: 6 },
         { nome: `headset`, id: 7 },
     ]
