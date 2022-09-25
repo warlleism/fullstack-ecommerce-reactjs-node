@@ -6,6 +6,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { Context } from "../../context/provider";
+import $ from 'jquery';
 
 import './style.scss'
 
@@ -57,12 +58,6 @@ const Header = (props) => {
 
     const localItens = (value) => {
         setDados(value)
-        localStorage.setItem("imagem", value.imagem)
-        localStorage.setItem("id", value.id)
-        localStorage.setItem("nome", value.nome)
-        localStorage.setItem("descricao", value.descricao)
-        localStorage.setItem("preco", value.preco)
-        localStorage.setItem("estrelas", value.estrelas)
     }
 
     const showMobileBar = (dado) => {
@@ -76,37 +71,13 @@ const Header = (props) => {
     }
 
     const categorias = [
-        {
-            nome: `pc gamer`,
-            id: 1
-        },
-        {
-            nome: `notebook`,
-            id: 2
-        },
-        {
-            nome: `smartphone`,
-            nome: `celular`,
-            id: 3
-        },
-        {
-            nome: `video game`,
-            nome2: `xbox`,
-            nome: `playstation`,
-            id: 4
-        },
-        {
-            nome: `cadeira gamer`,
-            id: 5
-        },
-        {
-            nome: `processador`,
-            id: 6
-        },
-        {
-            nome: `headset`,
-            id: 7
-        },
+        { nome: `pc gamer`, nome: `pc`, id: 1 },
+        { nome: `notebook`, id: 2 },
+        { nome: `smartphone`, nome: `celular`, id: 3 },
+        { nome: `video game`, id: 4 },
+        { nome: `cadeira gamer`, nome: `cadeira`, id: 5 },
+        { nome: `processador`, id: 6 },
+        { nome: `headset`, id: 7 },
     ]
 
     const setarDados = (id) => {
@@ -115,23 +86,27 @@ const Header = (props) => {
     }
 
     const searchInputEnter = () => {
-
-        const dados = categorias.map((e) => e)
+        categorias.forEach((value) => {
+            let data = inputTexto.includes(value.nome) ? setarDados(value.id) : false
+        });
         document.addEventListener("click", () => setInputTexto(""))
-        for (let i = 0; i < 7; i++) {
-            const data = inputTexto.includes(dados[i].nome || dados[i].nome2) ? setarDados(dados[i].id) : false
-        }
     }
+
+    $(document).keypress((e) => {
+        if (e.key == 'Enter') {
+            document.getElementById("btn").click()
+        }
+    });
 
     return (
         <>
-            <div className='main-header'>
+            <div className='main-header' id='header'>
                 <Link to="/">
                     <img src={require('../../img/logo.gif')} />
                 </Link>
                 <div className='container-input'>
                     <input type="text" value={inputTexto} onChange={e => setInputTexto(e.target.value)} />
-                    <Link to="/listagem" id="btn" onClick={() => searchInputEnter()}><img src={require("../../img/botaoSearch.png")} style={{ maxWidth: 70, position: 'absolute', right: -70, top: -15 }} /> </Link>
+                    <Link to="/listagem" id="btn" onClick={() => searchInputEnter()} ><img src={require("../../img/botaoSearch.png")} style={{ maxWidth: 70, position: 'absolute', right: -70, top: -15 }} /> </Link>
                     {inputTexto != '' ? false : <div className='texto-busque-aqui'>Busque aqui</div>}
                     {
                         inputTexto &&
