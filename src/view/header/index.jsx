@@ -80,7 +80,7 @@ const Header = (props) => {
         { nome: `pc gamer`, nome: `pc`, id: 1 },
         { nome: `notebook`, id: 2 },
         { nome: `smartphone`, nome: `celular`, id: 3 },
-        { nome: `video game`, id: 4 },
+        { nome: `video game`, nome: "console", id: 4 },
         { nome: `cadeira gamer`, id: 5 },
         { nome: `processador`, id: 6 },
         { nome: `headset`, id: 7 },
@@ -94,6 +94,7 @@ const Header = (props) => {
     const searchInputEnter = () => {
         categorias.forEach((value) => {
             let data = inputTexto.includes(value.nome) ? setarDados(value.id) : false
+            return data
         });
         document.addEventListener("click", () => setInputTexto(""))
     }
