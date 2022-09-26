@@ -17,6 +17,11 @@
         width: 30%;
         position: relative;
 
+        button{
+            border: none;
+            background-color: rgba(255, 0, 0, 0);
+        }
+
         input {
             width: 100%;
             border: none;

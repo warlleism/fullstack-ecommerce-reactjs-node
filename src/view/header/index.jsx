@@ -99,21 +99,15 @@ const Header = (props) => {
         document.addEventListener("click", () => setInputTexto(""))
     }
 
-    $(document).keypress((e) => {
-        if (e.key == 'Enter') {
-            document.getElementById("btn").click()
-        }
-    });
-
     return (
         <>
             <div className='main-header' id='header'>
                 <Link to="/">
                     <img src={require('../../img/logo.gif')} />
                 </Link>
-                <div className='container-input'>
+                <form action="/listagem" className='container-input'>
                     <input type="text" value={inputTexto} onChange={e => setInputTexto(e.target.value)} />
-                    <Link to="/listagem" id="btn" onClick={() => searchInputEnter()} ><img src={require("../../img/botaoSearch.png")} style={{ maxWidth: 70, position: 'absolute', right: -70, top: -15 }} /> </Link>
+                    <button style={{ position: 'absolute', right: -70, top: -15 }} id="btn" onClick={() => searchInputEnter()}><img src={require("../../img/botaoSearch.png")} style={{ maxWidth: 70 }} /></button>
                     {inputTexto != '' ? false : <div className='texto-busque-aqui'>Busque aqui</div>}
                     {
                         inputTexto &&
@@ -131,7 +125,7 @@ const Header = (props) => {
                         </div>
 
                     }
-                </div>
+                </form>
                 <div className='content-conteiner'>
                     <FontAwesomeIcon icon={faCircleUser} className="icon user" />
                     <Link className='carrinho' to="/carrinho" onClick={() => showMobileBar()} >
