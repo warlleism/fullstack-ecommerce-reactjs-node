@@ -76,13 +76,13 @@ const Header = (props) => {
     }
 
     const categorias = [
-        { nome: `pc gamer`, id: 1 },
-        { nome: `notebook`, id: 2 },
-        { nome: `smartphone`, id: 3 },
-        { nome: `video game`, id: 4 },
+        { nome: `pc gamer computador`, id: 1 },
+        { nome: `notebook macbook`, id: 2 },
+        { nome: `smartphone celular iphone samssung xiaomi lg`, id: 3 },
+        { nome: `video game xbox playstation nitendo switch`, id: 4 },
         { nome: `cadeira gamer`, id: 5 },
-        { nome: `processador`, id: 6 },
-        { nome: `headset`, id: 7 },
+        { nome: `processador intel ryzen`, id: 6 },
+        { nome: `headset headphone fone`, id: 7 },
     ]
 
     const setarDados = (id) => {
@@ -106,7 +106,7 @@ const Header = (props) => {
                 </Link>
                 <form action="/listagem" className='container-input'>
                     <input type="text" value={inputTexto} onChange={e => setInputTexto(e.target.value)} />
-                    <button style={{ position: 'absolute', right: -70, top: -15 }}  onClick={() => searchInputEnter()}><img src={require("../../img/botaoSearch.png")} style={{ maxWidth: 70 }} /></button>
+                    <button style={{ position: 'absolute', right: -70, top: -15 }} onClick={() => searchInputEnter()}><img src={require("../../img/botaoSearch.png")} style={{ maxWidth: 70 }} /></button>
                     {inputTexto != '' ? false : <div className='texto-busque-aqui'>Busque aqui</div>}
                     {
                         inputTexto &&
