@@ -1,12 +1,11 @@
-import { useContext, useEffect, useState } from 'react';
-import { faHeadset } from "@fortawesome/free-solid-svg-icons"
-import { faCircleUser } from "@fortawesome/free-solid-svg-icons"
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons"
-import { faBars } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { Context } from "../../context/provider";
-import $ from 'jquery';
+import { useContext, useEffect, useState } from 'react';
+import { faBars } from "@fortawesome/free-solid-svg-icons"
+import { faHeadset } from "@fortawesome/free-solid-svg-icons"
+import { faCircleUser } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons"
 
 import './style.scss'
 
@@ -107,7 +106,7 @@ const Header = (props) => {
                 </Link>
                 <form action="/listagem" className='container-input'>
                     <input type="text" value={inputTexto} onChange={e => setInputTexto(e.target.value)} />
-                    <button style={{ position: 'absolute', right: -70, top: -15 }} id="btn" onClick={() => searchInputEnter()}><img src={require("../../img/botaoSearch.png")} style={{ maxWidth: 70 }} /></button>
+                    <button style={{ position: 'absolute', right: -70, top: -15 }}  onClick={() => searchInputEnter()}><img src={require("../../img/botaoSearch.png")} style={{ maxWidth: 70 }} /></button>
                     {inputTexto != '' ? false : <div className='texto-busque-aqui'>Busque aqui</div>}
                     {
                         inputTexto &&
