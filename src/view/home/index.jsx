@@ -56,6 +56,7 @@ const Home = () => {
 
     return (
         <div>
+            {console.log(posicao)}
             <Header />
             {data?.length == 0 ?
                 <div style={{ height: "100vh", width: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

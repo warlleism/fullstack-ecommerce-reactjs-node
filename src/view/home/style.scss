@@ -156,7 +156,7 @@
 
             .container-cards {
                 display: flex;
-                width: 53vw !important;
+                width: 56vw !important;
 
                 img {
                     width: 100%;
@@ -172,37 +172,14 @@
     }
 }
 
-@media screen and (max-width: 1251px) {
-    .conteiner-carrousel {
-        .container-carroussel-cards {
-            .container-cards {
-                display: flex;
-                width: 52vw !important;
-            }
-        }
-    }
-}
 
-@media screen and (max-width: 1171px) {
+@media screen and (max-width: 1128px) {
     .conteiner-carrousel {
         .container-carroussel-cards {
 
             .container-cards {
                 display: flex;
-                width: 51vw !important;
-
-            }
-        }
-    }
-}
-
-@media screen and (max-width: 1145px) {
-    .conteiner-carrousel {
-        .container-carroussel-cards {
-
-            .container-cards {
-                display: flex;
-                width: 49vw !important;
+                width: 55vw !important;
 
             }
         }
