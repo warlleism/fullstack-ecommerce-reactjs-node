@@ -1,18 +1,11 @@
-import Header from '../header';
-import { useEffect } from 'react';
+import { faPrint, faCheck, faQrcode, faMobile, faBarcode, faCalendar, faComputer, faCreditCard } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useContext, useState } from 'react';
 import { ColorRing } from 'react-loader-spinner';
 import { Context } from "../../context/provider";
-import React, { useContext, useState } from 'react';
-import { faPrint } from "@fortawesome/free-solid-svg-icons"
-import { faBarcode } from "@fortawesome/free-solid-svg-icons"
-import { faMobile } from "@fortawesome/free-solid-svg-icons"
-import { faComputer } from "@fortawesome/free-solid-svg-icons"
-import { faQrcode } from "@fortawesome/free-solid-svg-icons"
-import { faCheck } from "@fortawesome/free-solid-svg-icons"
-import { faCalendar } from "@fortawesome/free-solid-svg-icons"
-import { faCreditCard } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { Spinner } from '../../styled';
+import { useEffect } from 'react';
+import Header from '../header';
 import './style.scss'
 
 const Comprar = () => {
@@ -33,7 +26,7 @@ const Comprar = () => {
         <>
             <Header />
             {data?.length == 0 ?
-                <div style={{ height: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Spinner>
                     <ColorRing
                         visible={true}
                         height="130"
@@ -43,7 +36,7 @@ const Comprar = () => {
                         wrapperClass="blocks-wrapper"
                         colors={['#F9F871', '#691A55', '#AE3B59', '#E17053', '#FBB252']}
                     />
-                </div>
+                </Spinner>
                 :
                 <>
                     {mobileBar == false &&
@@ -104,7 +97,6 @@ const Comprar = () => {
                                                 </div>
                                                 <div className='botao-fechar-pedido'>Fechar pedido</div>
                                             </div>
-
                                         </div>
                                         :
                                         pagamento == 'boleto'

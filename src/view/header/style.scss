@@ -17,7 +17,7 @@
         width: 30%;
         position: relative;
 
-        button{
+        .ninja-button {
             border: none;
             background-color: rgba(255, 0, 0, 0);
         }
@@ -193,6 +193,10 @@
 
         .container-input {
             width: 80% !important;
+
+            .ninja-button {
+                display: none;
+            }
 
             .container-pesquisa {
                 width: 102%;

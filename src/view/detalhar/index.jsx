@@ -1,9 +1,10 @@
-import { ColorRing } from 'react-loader-spinner';
-import { Context } from "../../context/provider";
-import React, { useContext, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons"
 import { faStar } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ColorRing } from 'react-loader-spinner';
+import { Context } from "../../context/provider";
+import React, { useContext } from 'react';
+import { Spinner } from '../../styled';
 import Header from '../header';
 
 import './style.scss'
@@ -17,11 +18,8 @@ const Detalhar = () => {
     const arrayQtdEstrelas = []
 
     function Stars() {
-
         const estrelasQtd = localStorage.getItem("estrelas").length
-
         const valor = estrelasQtd
-
         for (let i = 0; i < valor; i++) {
             arrayQtdEstrelas.push(i)
         }
@@ -52,11 +50,11 @@ const Detalhar = () => {
 
     return (
         <>
-        {console.log(dados)}
+            {console.log(dados)}
             {Stars()}
             <Header />
             {dados?.length == 0 ?
-                <div style={{ height: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Spinner>
                     <ColorRing
                         visible={true}
                         height="130"
@@ -66,7 +64,7 @@ const Detalhar = () => {
                         wrapperClass="blocks-wrapper"
                         colors={['#F9F871', '#691A55', '#AE3B59', '#E17053', '#FBB252']}
                     />
-                </div>
+                </Spinner>
                 :
                 <>
                     {

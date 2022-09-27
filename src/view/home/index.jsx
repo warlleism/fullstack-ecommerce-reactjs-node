@@ -4,6 +4,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 import { useContext, useEffect, useState } from 'react';
 import { ColorRing } from 'react-loader-spinner';
 import { Context } from "../../context/provider";
+import { Spinner } from '../../styled';
 import { Link } from 'react-router-dom';
 import BuscarMes from '../../util/mes';
 import Header from '../header';
@@ -56,10 +57,9 @@ const Home = () => {
 
     return (
         <div>
-            {console.log(posicao)}
             <Header />
             {data?.length == 0 ?
-                <div style={{ height: "100vh", width: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Spinner>
                     <ColorRing
                         visible={true}
                         height="130"
@@ -69,7 +69,7 @@ const Home = () => {
                         wrapperClass="blocks-wrapper"
                         colors={['#F9F871', '#691A55', '#AE3B59', '#E17053', '#FBB252']}
                     />
-                </div>
+                </Spinner>
                 :
                 <>
                     {

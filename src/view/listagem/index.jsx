@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ColorRing } from 'react-loader-spinner';
 import { Context } from "../../context/provider";
+import { Spinner, Card } from "../../style/index"
 import { Link } from "react-router-dom";
 import Header from '../header';
 
@@ -36,7 +37,7 @@ const Listagem = () => {
         <>
             <Header />
             {data?.length == 0 ?
-                < div style={{ height: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Spinner>
                     <ColorRing
                         visible={true}
                         height="130"
@@ -46,7 +47,7 @@ const Listagem = () => {
                         wrapperClass="blocks-wrapper"
                         colors={['#F9F871', '#691A55', '#AE3B59', '#E17053', '#FBB252']}
                     />
-                </div>
+                </Spinner>
                 :
                 <>
                     {mobileBar == false &&
@@ -55,7 +56,7 @@ const Listagem = () => {
                                 {data[0]?.map((e) => {
                                     return (
                                         <Link to="/detalhar" style={{ textDecoration: "none" }} onClick={() => localItens(e)}>
-                                            <div className='conteiner-card'>
+                                            <Card className='conteiner-card'>
                                                 <div>
                                                     <img src={`data:image/png;base64,${e?.imagem}`} />
                                                     <div className='nome-produto'>{e?.nome}</div>
@@ -64,12 +65,11 @@ const Listagem = () => {
                                                     <div className='preco-produto'>{e?.preco}</div>
                                                     <div className='pagamento-produto'>À vista no PIX</div>
                                                 </div>
-                                            </div>
+                                            </Card>
                                         </Link>
                                     )
                                 })}
                             </div>
-
                         )}
                 </>
             }

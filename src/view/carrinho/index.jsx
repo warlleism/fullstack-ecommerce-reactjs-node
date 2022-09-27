@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { ColorRing } from 'react-loader-spinner';
 import { Context } from "../../context/provider";
+import { Spinner } from '../../style';
 import { useEffect } from 'react';
 import Header from '../header';
 import axios from 'axios';
@@ -39,7 +40,7 @@ const Carrinho = () => {
     useEffect(() => {
         const reduceSalarios = data[0]?.reduce((valor, valorAtual) => valor + parseInt(valorAtual?.preco?.replace(/\D+/g, '')) * valorAtual?.quantidade, 0)
         let price = reduceSalarios?.toString()
-        
+
         if (price?.length == 7) {
             price = price?.replace(/(\d{2})/, '$1,')
             price = price?.replace(/(\d{3}(?!$))/g, '$1.')
@@ -60,7 +61,7 @@ const Carrinho = () => {
         <>
             <Header acumulador={acumulador} />
             {data?.length == 0 ?
-                <div style={{ height: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Spinner>
                     <ColorRing
                         visible={true}
                         height="130"
@@ -70,7 +71,7 @@ const Carrinho = () => {
                         wrapperClass="blocks-wrapper"
                         colors={['#F9F871', '#691A55', '#AE3B59', '#E17053', '#FBB252']}
                     />
-                </div>
+                </Spinner>
                 :
                 <>
                     {mobileBar == false &&
@@ -112,12 +113,12 @@ const Carrinho = () => {
                                         <div>Total</div>
                                         <div>R$ {valor}</div>
                                     </div>
-                                    <div className='botao-continuar'>
+                                    <Link to="/comprar" className='botao-continuar' style={{ textDecoration: "none" }}>
                                         {
-                                            valor == 0 ? <Link to="/carrinho" style={{ textDecoration: "none", color: "#ffff" }}>continuar</Link> : <Link to="/comprar" style={{ textDecoration: "none", color: "#ffff" }}>continuar</Link>
+                                            valor == 0 ? <div style={{ color: "#ffff" }}>continuar</div> : <div style={{ color: "#ffff" }}>continuar</div>
                                         }
 
-                                    </div>
+                                    </Link>
                                 </div>
                             </div>
                         )

@@ -106,7 +106,7 @@ const Header = (props) => {
                 </Link>
                 <form action="/listagem" className='container-input'>
                     <input type="text" value={inputTexto} onChange={e => setInputTexto(e.target.value)} />
-                    <button style={{ position: 'absolute', right: -70, top: -15 }} onClick={() => searchInputEnter()}><img src={require("../../img/botaoSearch.png")} style={{ maxWidth: 70 }} /></button>
+                    <button className='ninja-button' style={{ position: 'absolute', right: -70, top: -15 }} onClick={() => searchInputEnter()}><img src={require("../../img/botaoSearch.png")} style={{ maxWidth: 70 }} /></button>
                     {inputTexto != '' ? false : <div className='texto-busque-aqui'>Busque aqui</div>}
                     {
                         inputTexto &&
