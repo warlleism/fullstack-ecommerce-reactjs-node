@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ColorRing } from 'react-loader-spinner';
 import { Context } from "../../context/provider";
-import { Spinner, Card } from "../../style/index"
+import { Spinner, Card } from '../../styled/index';
 import { Link } from "react-router-dom";
 import Header from '../header';
 
