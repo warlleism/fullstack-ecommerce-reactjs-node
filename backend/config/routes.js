@@ -1,6 +1,6 @@
 const express = require('express')
 const routes = express.Router()
-const db = require('../src/db')
+const db = require('../model/db')
 
 //Rota para listagem de produtos
 routes.get('/listar', async (req, res) => {
