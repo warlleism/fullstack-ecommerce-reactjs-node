@@ -38,11 +38,11 @@ const Home = () => {
     }
 
     const LeftMobile = () => {
-        posicaoMobile == 0 ? setPosicaoMobile(-700) : setPosicaoMobile(parseInt(posicaoMobile + 100))
+        posicaoMobile == 0 ? setPosicaoMobile(-600) : setPosicaoMobile(parseInt(posicaoMobile + 100))
     }
 
     const RigthMobile = () => {
-        posicaoMobile == -700 ? setPosicaoMobile(0) : setPosicaoMobile(parseInt(posicaoMobile - 100))
+        posicaoMobile == -600 ? setPosicaoMobile(0) : setPosicaoMobile(parseInt(posicaoMobile - 100))
     }
 
     const localItens = (value) => {
@@ -57,6 +57,7 @@ const Home = () => {
 
     return (
         <div>
+            {console.log(posicaoMobile)}
             <Header />
             {data?.length == 0 ?
                 <Spinner>
