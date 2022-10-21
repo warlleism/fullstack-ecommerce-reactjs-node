@@ -4,12 +4,11 @@ import { faStar } from "@fortawesome/free-solid-svg-icons"
 import { ColorRing } from 'react-loader-spinner';
 import { Context } from "../../context/provider";
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { Spinner } from '../../styled';
 import Header from '../header';
-
-import './style.scss'
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import './style.scss'
 
 const Detalhar = () => {
 

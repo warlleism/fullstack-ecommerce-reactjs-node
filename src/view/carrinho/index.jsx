@@ -53,6 +53,10 @@ const Carrinho = () => {
             price = price?.replace(/(\d{3})/, '$1,')
         }
 
+        if (price?.length == 4) {
+            price = price?.replace(/(\d{2})/, '$1,')
+        }
+
         setValor(price)
         localStorage.setItem("valorTotal", price)
     }, [data])

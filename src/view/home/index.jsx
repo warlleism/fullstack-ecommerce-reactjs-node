@@ -30,7 +30,7 @@ const Home = () => {
     const { setDados } = useContext(Context);
 
     const Left = () => {
-        posicao == 1.2 ? setPosicao(-24) : setPosicao(parseInt(posicao + 13))
+        posicao == 1.2 || posicao == 2 ? setPosicao(-24) : setPosicao(parseInt(posicao + 13))
     }
 
     const Rigth = () => {
@@ -57,7 +57,7 @@ const Home = () => {
 
     return (
         <div>
-            {console.log(posicaoMobile)}
+            {console.log(posicao)}
             <Header />
             {data?.length == 0 ?
                 <Spinner>
